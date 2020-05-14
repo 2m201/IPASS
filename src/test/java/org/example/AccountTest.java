@@ -16,18 +16,24 @@ class AccountTest {
     }
 
     @Test
-    void hetzelfdeAccountMaken(){
+    void creatingTheSameAccount(){
         Account a2 = new Account("melaniekelley@hotmail.com", "melaniekelleey", "Melanie Kelley");
-        assertEquals(1, Data.alleAccounts.size() );
-
+        assertEquals(1, Data.allAccounts.size() );
     }
 
     @Test
-    void wachtwoordTeKlein(){
+    void passwordTooShort(){
         Account a3 = new Account("a.b.a.vandehoef@hotmail.com", "annemae", "Annemae van de Hoef");
-        assertEquals(1, Data.alleAccounts.size() );
-
-
+        assertEquals(1, Data.allAccounts.size() );
     }
+
+    @Test
+    void changingRoleToAdmin(){
+        Account a4 = new Account("Kiki@deliveryservice.com", "rakakakakakaka", "Annemae van de Hoef");
+        Account.setAdministrator(a4);
+        assertEquals("Admin", a4.getType());
+    }
+
+
 
 }
