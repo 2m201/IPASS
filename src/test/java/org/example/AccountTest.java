@@ -3,6 +3,8 @@ package org.example;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AccountTest {
@@ -32,6 +34,24 @@ class AccountTest {
         Account a4 = new Account("Kiki@deliveryservice.com", "rakakakakakaka", "Annemae van de Hoef");
         Account.setAdministrator(a4);
         assertEquals("Admin", a4.getType());
+    }
+
+    @Test
+    void addMaterialsToList(){
+        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie"); //ask mae why it works for a5 but not for a1??
+        Material m1 = new Material("Softwood");
+        Material m2 = new Material ("Stone");
+
+        HashMap<Material, Integer> list = new HashMap<>();
+        list.put(m1, 3);
+        list.put(m2,7);
+        a5.addSavedMaterials(list);
+        assertEquals(2, a5.getSavedMaterials().size());
+    }
+
+    @Test
+    void addCharacterTwice(){
+        Character c2 = new Character("Sherb","Male","Lazy","Goat","January 18");
     }
 
 
