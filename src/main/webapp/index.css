@@ -1,0 +1,29 @@
+body{
+    background-color: #e5f5dc;
+}
+
+h1{
+    font-size : 2em;
+}
+
+.vertical-menu{
+    width: 200px;
+
+}
+
+.vertical-menu a{
+    background-color : #eeee;
+    color: black;
+    display : block;
+    border-color : black;
+    text-decoration: none;
+}
+
+.vertical-menu a:hover{
+    background-color: #ccc;
+}
+
+.vertical-menu a.active{
+    background-color: #4CAF50;
+    color : white;
+}

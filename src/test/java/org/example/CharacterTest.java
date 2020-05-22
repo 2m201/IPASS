@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.domein.Character;
+import org.example.domein.Data;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +14,7 @@ class CharacterTest {
 
     @BeforeEach
     public void init(){
-        Data.resetData();
+        //Data.resetData();
         k1 = new Character("Kiki", "Female", "Normal", "Cat", "October 8");
         System.out.println("TEST");
     }

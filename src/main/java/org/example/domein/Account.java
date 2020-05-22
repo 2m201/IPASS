@@ -1,12 +1,13 @@
-package org.example;
+package org.example.domein;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Account {
+public class Account implements Principal {
     private String email;
     private String password;
-    private String type = "User";
+    private String role = "User";
     private String name;
 
     private ArrayList<Character> favouriteCharacter = new ArrayList<>();
@@ -14,14 +15,14 @@ public class Account {
     private HashMap<Material, Integer> savedMaterials = new HashMap<>();
 
     public Account(String email , String password, String name){
-        if (Data.allAccounts.stream().noneMatch(aList -> aList.getEmail().equals(email))) {
+        if (Data.getData().allAccounts.stream().noneMatch(aList -> aList.getName().equals(email))) {
             if (password.length() < 8){
                 System.out.println("The password that you filled in is too short. Please fill in a password that is longer than eight characters!");
             }else{
                 this.email = email;
                 this.password = password;
                 this.name = name;
-                Data.allAccounts.add(this);
+                Data.getData().allAccounts.add(this);
             }
         }else{
             System.out.println("The emailadres that you filled in has already been registered in our system. Please use another emailadres!");
@@ -29,12 +30,12 @@ public class Account {
     }
 
     public static void setAdministrator(Account account){
-        if (!Data.allAccounts.contains(account)){
+        if (!Data.getData().allAccounts.contains(account)){
             System.out.println("The account you want to change has not been registered in our system. Please use another account!");
         }else {
-            for (Account item : Data.allAccounts) {
-                if (item.getEmail() == account.getEmail()) {
-                    account.type = "Admin";
+            for (Account item : Data.getData().allAccounts) {
+                if (item.getName() == account.getName()) {
+                    account.role = "Admin";
                     System.out.println("The type of account has been changed to Admin");
                 }
             }
@@ -65,8 +66,18 @@ public class Account {
     }
 
 
-    public String getEmail(){ return email; }
-    public String getType(){ return type; }
+    public String getName(){ return email; }
+    public String getRole(){ return role; }
+    public static Account getAccountByName(String name){ return Data.getData().allAccounts.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null); }
+
+    public static String validateLogin(String username, String password){
+        Account found = getAccountByName(username);
+        if (found != null){
+            return password.equals(found.password) ? found.getRole() : null;
+        }
+        return null;
+    }
+
     public HashMap<Material, Integer> getSavedMaterials(){ return savedMaterials;}
 
 

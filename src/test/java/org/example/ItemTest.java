@@ -1,10 +1,12 @@
 package org.example;
 
+import org.example.domein.Data;
+import org.example.domein.Item;
+import org.example.domein.Material;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -15,7 +17,7 @@ class ItemTest {
 
     @BeforeEach
     void init(){
-        Data.resetData();
+        //Data.resetData();
         map.put(m1,3);
         map.put(m2,4);
         Item i1 = new Item("Bench", map);
