@@ -1,8 +1,9 @@
 package org.example.domein;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Material {
+public class Material implements Serializable {
     private String name;
 
 

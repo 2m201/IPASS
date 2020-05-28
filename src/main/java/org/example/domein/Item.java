@@ -1,9 +1,10 @@
 package org.example.domein;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Item {
+public class Item implements Serializable {
     private String name;
     private HashMap<Material, Integer> materialList = new HashMap<>() ;
 

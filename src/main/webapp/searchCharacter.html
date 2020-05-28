@@ -2,76 +2,96 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Search</title>
     <link rel="stylesheet" href = "searchCharacter.css">
 </head>
 <body>
 
-<form id="GETcharacterform">
-    <label for ="searchCharacter"> Search a character!</label>
-    <input type="text" id="searchCharacter" name="searchCharacter">
-    <input type = "button" id ="searchButton" value="Search!" onclick="clearcontent('myData')">
-</form>
+    <div class="navbar">
+        <nav class="navigation" id="navigation">
+            <label class="logo" for="navigation">ACRemember</label>
+            <ul>
+                <li><a href ="index.html">Home</a></li>
+                <li><a href ="materialFill.html">Materials</a></li>
+                <li><a href = "searchCharacter.html">Search</a></li>
+                <li><a href="">Favourite</a></li>
+                <li><a href ="">Current </a></li>
+                <li><a href = "">Items</a></li>
+            </ul>
+        </nav>
+    </div>
 
-<div id="myData"></div>
+    <header>
+        <h1>Need to find a character?</h1>
+        <p class="text">Finding a character can be quite difficult, as there are over 400 characters in Animal Crossing! Use this search engine to find your new best friend! Search for their name, species or personality.</p>
+        <p class="text">Please remember, this website is still in development! Not all characters are available to be searched at the moment.</p>
+    </header>
 
-<script>
-    function clearcontent(elementID){
-        document.getElementById(elementID).innerHTML = ""
-    }
-</script>
+    <main>
+        <form id="GETcharacterform">
+            <label for ="searchCharacter" class="text">Please search for characters below:</label>
+            <br>
+            <input type="text" id="searchCharacter" name="searchCharacter">
+            <input type = "button" id ="searchButton" value="Search!" onclick="clearContent('myData')">
+        </form>
 
-<script>
-    function passVariable(name){
-        console.log("hoi");
-        window.localStorage.setItem('name', name);
-        console.log(localStorage['name']);
-    }
+        <div id="myData">
 
-</script>
+        </div>
 
-<script>
-    function appendData(data) {
-        let mainContainer = document.getElementById("myData");
-        let characterNav = document.createElement('nav');
+        <script>
+            function clearContent(elementID){
+                document.getElementById(elementID).innerHTML = ""
+            }
+        </script>
 
-        let item;
-        for (item of data) {
-            let characterA = document.createElement('a');
-            let characterLi = document.createElement('li');
+        <script>
+            function passVariable(name){
+                console.log(name);
+                window.localStorage.setItem('name', name);
+            }
+        </script>
 
-            characterLi.setAttribute('name', item.name);
-            console.log("First " + item.name);
-            characterLi.appendChild(document.createElement('small')).textContent= item.name;
-            characterA.setAttribute('href', 'character.html');
-            characterA.setAttribute('name', item.name);
-            characterA.onclick =function() {passVariable(item.name)};
+        <script>
+            function appendData(data) {
+                let mainContainer = document.getElementById("myData");
+                let characterNav = document.createElement('nav');
 
-            characterA.appendChild(characterLi);
-            characterNav.appendChild(characterA);
-            mainContainer.appendChild(characterNav);
-        }
+                for (const item of data) {
+                    let characterA = document.createElement('a');
+                    let characterLi = document.createElement('li');
 
-    }
+                    characterLi.appendChild(document.createElement('small')).textContent= item.name;
+                    characterA.setAttribute('href', 'character.html');
+                    characterA.onclick =function() {passVariable(item.name)};
 
+                    characterA.appendChild(characterLi);
+                    characterNav.appendChild(characterA);
+                    mainContainer.appendChild(characterNav);
+                }
 
-</script>
+            }
 
+        </script>
+    </main>
 
-<script type="text/javascript">
-    document.querySelector("#searchButton").addEventListener("click", function (){
-        let character = document.querySelector("#searchCharacter").value;
+    <script type="text/javascript">
+        document.querySelector("#searchButton").addEventListener("click", function (){
+            let character = document.querySelector("#searchCharacter").value;
 
-        fetch("restservices/characters/"+character, {method : 'GET'})//with GET-method, no body is sent. So no need for a formData or encData.
-        .then (response => response.json())
-        .then(function(data){
-            appendData(data)
+            fetch("restservices/characters/"+character, {method : 'GET'})//with GET-method, no body is sent. So no need for a formData or encData.
+            .then (response => response.json())
+            .then(function(data){
+                if (data == null){
+                    document.getElementById('errormessage').style.display = "block";
+                }
+                appendData(data)
+            })
+            .then(function(myJson){
+                console.log(myJson)
+            })
         })
-        .then(function(myJson){
-            console.log(myJson)
-        })
-    })
-</script>
+    </script>
 
 </body>
 </html>

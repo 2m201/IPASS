@@ -54,7 +54,7 @@ class AccountTest {
 
     @Test
     void addCharacterTwice(){
-        Character c2 = new Character("Sherb","Male","Lazy","Goat","January 18");
+      //  Character c2 = new Character("Sherb","Male","Lazy","Goat","January 18");
     }
 
 

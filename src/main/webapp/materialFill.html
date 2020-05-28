@@ -2,89 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Materials</title>
     <link rel = "stylesheet" href = "materialFill.css">
 </head>
 <body>
 
-<!--<div>
-    <h1>Check the amount of materials!</h1>
-    <label class="firstLabel">Softwood </label>
-   <label>yee</label>
-    <label class="firstLabel">Iron nugget</label>
+    <div class="navbar">
+        <nav class="navigation" id="navigation">
+            <label class="logo" for="navigation">ACRemember</label>
+            <ul>
+                <li><a href ="index.html">Home</a></li>
+                <li><a href ="materialFill.html">Materials</a></li>
+                <li><a href = "searchCharacter.html">Search</a></li>
+                <li><a href="">Favourite</a></li>
+                <li><a href ="">Current </a></li>
+                <li><a href = "">Items</a></li>
+            </ul>
+        </nav>
+    </div>`
 
-    <br> <br>
+    <main>
+        <h1>Fill in the amount!</h1>
+        <form id ="POSTmaterialForm">
+            <fieldset disabled="disabled" id="fieldset">
+                <legend hidden>Fill in the amount!</legend>
+            <label for = "softwood" class="firstLabel" >Softwood</label>
+            <input type="text" id="softwood" name="softwood">
 
-    <label class="firstLabel">Tree branch</label>
+            <label for = "ironnugget" class="firstLabel">Iron nugget</label>
+            <input type="text" id="ironnugget" name="ironnugget">
+            <br> <br>
 
-    <label class="firstLabel" >Wood</label>
+            <label for = "treebranch" class="firstLabel">Tree branch</label>
+            <input type="text" id="treebranch" name="treebranch">
 
-    <br> <br>
+            <label for = "wood" class="firstLabel">Wood</label>
+            <input type="text" id="wood" name="wood">
+            <br> <br>
 
-    <label class="firstLabel">Clay</label>
+            <label for = "clay" class="firstLabel">Clay</label>
+            <input type="text" id="clay" name="clay" >
 
-    <label class="firstLabel">Hardwood</label>
+            <label for = "hardwood" class="firstLabel">Hardwood</label>
+            <input type="text" id="hardwood" name="hardwood" >
+            <br> <br>
 
-    <br> <br>
+            <label for = "goldnugget" class="firstLabel">Gold nugget</label>
+            <input type="text" id="goldnugget" name="goldnugget">
 
-    <label class="firstLabel">Gold nugget</label>
+            <label for = "stone" class="firstLabel">Stone</label>
+            <input type="text" id="stone" name="stone">
+            <br> <br>
 
-    <label class="firstLabel">Stone</label>
+            <label for = "starfragment" class="firstLabel">Star fragment</label>
+            <input type="text" id="starfragment" name="starfragment">
 
-    <br> <br>
+            <label for = "clumpofweeds" class="firstLabel">Clump of weeds</label>
+            <input type="text" id="clumpofweeds" name="clumpofweeds">
 
-    <label class="firstLabel">Star fragment</label>
+                <input id="hashmap" name ="hashmap" hidden value="materialhashmap">
 
-    <label class="firstLabel">Clump of weeds</label>
+            </fieldset>
+            <input class ="button" type= "button" id="change" value="Change!" onclick="show()" style="float: right;">
+            <input class ="button" type="button" id="confirmation" value="Save!" onclick="hide()" hidden style="float: right;">
 
-    <input type="button" value="Change" >
-</div>-->
-
-    <h1>Fill in the amount!</h1>
-    <form id ="POSTmaterialForm">
-        <fieldset disabled="disabled" id="fieldset">
-        <label for = "softwood" class="firstLabel">Softwood</label>
-        <input type="text" id="softwood" name="softwood">
-
-<!--        <label for = "ironnugget" class="firstLabel">Iron nugget</label>-->
-<!--        <input type="text" id="ironnugget" name="ironnugget">-->
-<!--        <br> <br>-->
-
-<!--        <label for = "treebranch" class="firstLabel">Tree branch</label>-->
-<!--        <input type="text" id="treebranch" name="treebranch">-->
-
-<!--        <label for = "wood" class="firstLabel">Wood</label>-->
-<!--        <input type="text" id="wood" name="wood">-->
-<!--        <br> <br>-->
-
-<!--        <label for = "clay" class="firstLabel">Clay</label>-->
-<!--        <input type="text" id="clay" name="clay" >-->
-
-<!--        <label for = "hardwood" class="firstLabel">Hardwood</label>-->
-<!--        <input type="text" id="hardwood" name="hardwood" >-->
-<!--        <br> <br>-->
-
-<!--        <label for = "goldnugget" class="firstLabel">Gold nugget</label>-->
-<!--        <input type="text" id="goldnugget" name="goldnugget">-->
-
-<!--        <label for = "stone" class="firstLabel">Stone</label>-->
-<!--        <input type="text" id="stone" name="stone">-->
-<!--        <br> <br>-->
-
-<!--        <label for = "starfragment" class="firstLabel">Star fragment</label>-->
-<!--        <input type="text" id="starfragment" name="starfragment">-->
-
-<!--        <label for = "clumpofweeds" class="firstLabel">Clump of weeds</label>-->
-<!--        <input type="text" id="clumpofweeds" name="clumpofweeds">-->
-
-            <input id="hashmap" name ="hashmap" hidden value="materialhashmap">
-
-        </fieldset>
-        <input class ="button" type= "button" id="change" value="Change!" onclick="show()" style="float: right;">
-        <input class ="button" type="button" id="confirmation" value="Save!" onclick="hide()" hidden style="float: right;">
-
-    </form>
-
+        </form>
+    </main>
     <script>
         function show(){
             document.getElementById('fieldset').disabled = false;

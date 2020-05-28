@@ -1,8 +1,9 @@
 package org.example.domein;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Data {
+public class Data implements Serializable {
     protected ArrayList<Character> allCharacters = new ArrayList<>();
     protected ArrayList<Account> allAccounts = new ArrayList<>();
     protected ArrayList<Material> allMaterials = new ArrayList<>();

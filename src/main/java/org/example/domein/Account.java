@@ -1,10 +1,11 @@
 package org.example.domein;
 
+import java.io.Serializable;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Account implements Principal {
+public class Account implements Principal, Serializable {
     private String email;
     private String password;
     private String role = "User";
