@@ -35,7 +35,7 @@ public class Character implements Serializable{
         List<Character> characterList = new ArrayList<>();
         for (Character item : Data.getData().allCharacters){
             if (item.getName().equals(input) || item.getPersonality().equals(input) || item.getSpecies().equals(input)){
-                System.out.println("The character" + item.getName() + " exists");
+                System.out.println("The character " + item.getName() + " exists");
                 characterList.add(item);
             }
         }

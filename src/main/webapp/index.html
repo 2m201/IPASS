@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome!</title>
-    <link rel = "stylesheet" href = "index.css">
-    <script type="text/javascript" ></script>
+    <link rel = "stylesheet" href = "css/index.css">
+    <script type="application/javascript" src="js/index.js"></script>
 </head>
 
 <body>
@@ -15,16 +15,34 @@
                 <li><a href ="index.html">Home</a></li>
                 <li><a href ="materialFill.html">Materials</a></li>
                 <li><a href = "searchCharacter.html">Search</a></li>
-                <li><a href="">Favourite</a></li>
-                <li><a href ="">Current </a></li>
+                <li><a href="favouriteCharacter.html">Favourite</a></li>
+                <li><a href ="currentCharacter.html">Current </a></li>
                 <li><a href = "">Items</a></li>
             </ul>
         </nav>
-    </div>
+    </div> <!-- navigation bar-->
 
     <main>
+        <div class="login">
+            <h1>Please login</h1>
+            <form id="loginForm">
+                <label for ="username">Username: </label>
+                <input type="text" id="username" name="username">
 
+                <br>
+                <br>
+
+                <label for="password">Password: </label>
+                <input type="password" id="password" name="password">
+
+                <br>
+                <br>
+
+                <input type="button" id="login" value="Login" onclick="login()">
+            </form>
+        </div>
     </main>
+
 </body>
 
 </html>

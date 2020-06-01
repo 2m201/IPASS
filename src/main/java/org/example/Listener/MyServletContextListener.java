@@ -1,5 +1,6 @@
 package org.example.Listener;
 
+import org.example.domein.Account;
 import org.example.persistance.PersistenceManager;
 
 import javax.servlet.ServletContextEvent;
@@ -27,7 +28,7 @@ public class MyServletContextListener implements ServletContextListener {
             lilly.setPicture("https://vignette.wikia.nocookie.net/animalcrossing/images/e/e8/Lili_%28New_Horizons%29.png/revision/latest/scale-to-width-down/340?cb=20200221074157&path-prefix=es");
             Character hornsby = new Character("Hornsby", "Male", "Lazy", "Rhino", "March 20th", "You can't hit a mosquito with a horseshoe.", "Hornsby (みつお, Mitsuo) is a lazy rhino villager from the Animal Crossing series. His name is a play on the horn on his head. His picture quote in New Leaf seems to be a reference to his e-reader card profile. Hornsby was first seen in the GCN games, and did not appear in future iterations until the Welcome amiibo update in New Leaf. He was, however, found in the data for Happy Home Designer, but unlike many other unused villagers, he has no icon and only textures for him exist in the game's code.");
             hornsby.setPicture("https://vignette.wikia.nocookie.net/animalcrossing/images/9/95/Hornsby_NH.png/revision/latest/scale-to-width-down/333?cb=20200312014627");
-
+            Account mokko = new Account("mokko", "melanie123", "Melanie");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

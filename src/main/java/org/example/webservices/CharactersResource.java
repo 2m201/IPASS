@@ -13,14 +13,13 @@ public class CharactersResource {
     @Path("{searchCharacter}")
     @Produces("application/json")
     public Response getCharacterByName(@PathParam("searchCharacter") String character){
+
         List<Character> c1 = Character.searchCharacter(character);
-        if(character == null){
-            return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character doesn't exist")).build();
-        }
+
         if(!(c1.isEmpty())){
                 return Response.ok(c1).build();
         }
-        return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", "Character doesn't exist")).build();
+        return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character doesn't exist")).build();
     }
 
 }

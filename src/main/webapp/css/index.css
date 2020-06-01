@@ -60,6 +60,25 @@ a.active,a:hover{
     transition: .5s;
 }
 
-main{
+label{
+    display: inline-block;
+    width : 100px;
+}
+
+.login{
+    display: block;
+    text-align: center;
     margin-top: 85px;
+}
+
+form{
+    display: inline-block;
+
+
+}
+
+#login{
+
+    size : 20px;
+
 }

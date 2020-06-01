@@ -6,38 +6,38 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Account implements Principal, Serializable {
-    private String email;
+    private String username;
     private String password;
-    private String role = "User";
+    private String role = "user";
     private String name;
 
     private ArrayList<Character> favouriteCharacter = new ArrayList<>();
     private ArrayList<Character> currentCharacter = new ArrayList<>();
     private HashMap<Material, Integer> savedMaterials = new HashMap<>();
 
-    public Account(String email , String password, String name){
-        if (Data.getData().allAccounts.stream().noneMatch(aList -> aList.getName().equals(email))) {
+    public Account(String username, String password, String name){
+        if (Data.getData().allAccounts.stream().noneMatch(aList -> aList.getName().equals(username))) {
             if (password.length() < 8){
                 System.out.println("The password that you filled in is too short. Please fill in a password that is longer than eight characters!");
             }else{
-                this.email = email;
+                this.username = username;
                 this.password = password;
                 this.name = name;
                 Data.getData().allAccounts.add(this);
             }
         }else{
-            System.out.println("The emailadres that you filled in has already been registered in our system. Please use another emailadres!");
+            System.out.println("The username has already been registered in our system. Please use another!");
         }
     }
 
     public static void setAdministrator(Account account){
         if (!Data.getData().allAccounts.contains(account)){
-            System.out.println("The account you want to change has not been registered in our system. Please use another account!");
+            System.out.println("The account you want to change has not been registered in our system. Please use another!");
         }else {
             for (Account item : Data.getData().allAccounts) {
                 if (item.getName() == account.getName()) {
-                    account.role = "Admin";
-                    System.out.println("The type of account has been changed to Admin");
+                    account.role = "admin";
+                    System.out.println("The role of account has been changed to the role Admin");
                 }
             }
         }
@@ -67,7 +67,7 @@ public class Account implements Principal, Serializable {
     }
 
 
-    public String getName(){ return email; }
+    public String getName(){ return username; }
     public String getRole(){ return role; }
     public static Account getAccountByName(String name){ return Data.getData().allAccounts.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null); }
 
