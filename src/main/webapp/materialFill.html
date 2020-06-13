@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Materials</title>
     <link rel = "stylesheet" href = "css/materialFill.css">
-    <script type="application/javascript" src="js/materialFill.js"></script>
+
 </head>
 
-<body>
+<body onload=getMaterials()> <!-- NULL POINTER EXCEPTION-->
 
     <div class="navbar">
         <nav class="navigation" id="navigation">
@@ -24,9 +24,69 @@
     </div>
 
     <main>
+
+        <section id="materialSection">
+
+            <table class="materialTable" border="1">
+                <thead>
+                <tr>
+                    <th scope="col" colspan="2">Materials</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <th>Softwood</th>
+                        <td id="softwoodTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Tree branch</th>
+                        <td id="treebranchTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Clay</th>
+                        <td id="clayTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Gold nugget</th>
+                        <td id="goldnuggetTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Star fragment</th>
+                        <td id="starfragmentTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Iron nugget</th>
+                        <td id="ironnuggetTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Wood</th>
+                        <td id="woodTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Hard wood</th>
+                        <td id="hardwoodTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Stone</th>
+                        <td id="stoneTable"></td>
+                    </tr>
+                    <tr>
+                        <th>Clump of weeds</th>
+                        <td id="clumpofweedsTable"></td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <input type="button" value="Change!" onclick="show()">
+        </section>
+
+
+
+        <section hidden id="changeMaterialForm">
         <h1>Fill in the amount!</h1>
         <form id ="POSTmaterialForm">
-            <fieldset disabled="disabled" id="fieldset">
+            <fieldset id="fieldset">
                 <legend hidden>Fill in the amount!</legend>
             <label for = "softwood" class="firstLabel" >Softwood</label>
             <input type="text" id="softwood" name="softwood">
@@ -62,15 +122,14 @@
             <label for = "clumpofweeds" class="firstLabel">Clump of weeds</label>
             <input type="text" id="clumpofweeds" name="clumpofweeds">
 
-                <input id="hashmap" name ="hashmap" hidden value="materialhashmap">
-
             </fieldset>
-            <input class ="button" type= "button" id="change" value="Change!" onclick="show()" style="float: right;">
-            <input class ="button" type="button" id="confirmation" value="Save!" onclick="hide()" hidden style="float: right;">
+
+            <input class ="button" type="button" onclick="hide()" id="confirmation" value="Save!"  style="float: right;">
 
         </form>
+        </section>
     </main>
 
 </body>
-
+<script type="application/javascript" src="js/materialFill.js"></script>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Character</title>
+    <title id="title"></title>
     <link rel = "stylesheet" href = "css/character.css">
     <script type="application/javascript" src="js/character.js"></script>
 </head>
@@ -65,9 +65,22 @@
 
             </table>
         </section>
+
+        <section>
+            <label for="characterList">Add to a list: </label>
+            <select id="characterList" required>
+                <option disabled hidden selected>--Please choose an option--</option>
+                <option value="current">Current</option>
+                <option value="favourite">Favourite</option>
+            </select>
+            <input type="button" id="saveButton" value="Save!" onclick="saveCharacter()">
+        </section>
+
+        <form id="charFORM" hidden>
+            <input  name="characterName" id="characterName">
+        </form>
+
     </main>
-
-
 
 </body>
 </html>

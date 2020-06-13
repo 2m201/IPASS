@@ -33,9 +33,21 @@ public class AuthenticationResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public Response authenticateUserByPassword(@FormParam("username") String username, @FormParam("password") String password) {
+        if (username.isEmpty() || password.isEmpty() ){
+            return Response.status(400).entity(new AbstractMap.SimpleEntry<String, String>("error", "Voer alles in")).build();
+        }
+
         try {
+            if (Account.getAccountByName(username) == null){
+                return Response.status(404).entity(new AbstractMap.SimpleEntry<String, String>("error", "Account doesn't exist")).build();
+            }
+
             String role = Account.validateLogin(username, password);
+            if (role==null){
+                return Response.status(409).entity(new AbstractMap.SimpleEntry<String, String>("error", "Account doesn't exist")).build();
+            }
             String token = createToken(username, role);
+            System.out.println(username + role);
 
             AbstractMap.SimpleEntry<String, String> JWT = new AbstractMap.SimpleEntry<>("JWT", token);
             return Response.ok(JWT).build();

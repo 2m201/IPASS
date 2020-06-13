@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class Account implements Principal, Serializable {
     private String username;
     private String password;
-    private String role = "user";
+    private String role;
     private String name;
 
     private ArrayList<Character> favouriteCharacter = new ArrayList<>();
@@ -23,6 +23,7 @@ public class Account implements Principal, Serializable {
                 this.username = username;
                 this.password = password;
                 this.name = name;
+                this.role = "user";
                 Data.getData().allAccounts.add(this);
             }
         }else{
@@ -35,7 +36,7 @@ public class Account implements Principal, Serializable {
             System.out.println("The account you want to change has not been registered in our system. Please use another!");
         }else {
             for (Account item : Data.getData().allAccounts) {
-                if (item.getName() == account.getName()) {
+                if (item.getName().equals(account.getName())) {
                     account.role = "admin";
                     System.out.println("The role of account has been changed to the role Admin");
                 }
@@ -49,7 +50,6 @@ public class Account implements Principal, Serializable {
             System.out.println("The following materials have been added: " + list.keySet());
         }
     }
-
     public void addFavouriteCharacter(Character character){
         if (favouriteCharacter.contains(character)){
             System.out.println("The character you are trying to add already has been added!");
@@ -57,7 +57,6 @@ public class Account implements Principal, Serializable {
             favouriteCharacter.add(character);
         }
     }
-
     public void addCurrentCharacter(Character character){
         if (currentCharacter.contains(character)){
             System.out.println("The character you are trying to add already has been added!");
@@ -66,10 +65,16 @@ public class Account implements Principal, Serializable {
         }
     }
 
-
+    @Override
     public String getName(){ return username; }
     public String getRole(){ return role; }
-    public static Account getAccountByName(String name){ return Data.getData().allAccounts.stream().filter(item -> item.getName().equals(name)).findFirst().orElse(null); }
+
+    public static Account getAccountByName(String name){
+        return Data.getData().allAccounts.stream()
+                .filter(item -> item.username.equals(name))
+                .findFirst()
+                .orElse(null);
+    }
 
     public static String validateLogin(String username, String password){
         Account found = getAccountByName(username);
@@ -81,6 +86,11 @@ public class Account implements Principal, Serializable {
 
     public HashMap<Material, Integer> getSavedMaterials(){ return savedMaterials;}
 
+    public ArrayList<Character> getCurrentCharacters() {
+        return currentCharacter;
+    }
 
-
+    public ArrayList<Character> getFavouriteCharacters() {
+        return favouriteCharacter;
+    }
 }

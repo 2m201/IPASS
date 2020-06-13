@@ -5,25 +5,25 @@ import org.example.domein.Account;
 import javax.ws.rs.core.SecurityContext;
 import java.security.Principal;
 
-public class MySecurityContext implements SecurityContext { //object bestaat heel kort, tot de request gedaan is
+public class MySecurityContext implements SecurityContext {
     private Account user;
     private String scheme;
 
-    public MySecurityContext(Account user, String scheme) {
+    public MySecurityContext(Account user, String  scheme){
         this.user = user;
         this.scheme = scheme;
     }
 
     @Override
-    public Principal getUserPrincipal() {return this.user;} //principal bevat informatie over de gebruiker, vooral de naam
+    public Principal getUserPrincipal() { return this.user; }
 
     @Override
-    public boolean isUserInRole(String s) {
-        if(user.getRole() != null) {
-            System.out.println(s + "equals" + user.getRole());
-            return s.equals(user.getRole());
+    public boolean isUserInRole(String role) {
+        if(user.getRole()!=null){
+            return role.equals(user.getRole());
         }
         return false;
+
     }
 
     @Override

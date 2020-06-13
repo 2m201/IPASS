@@ -24,4 +24,11 @@ public class Material implements Serializable {
         return Data.getData().allMaterials;
     }
 
+    public static Material getMaterialByName(String nam){
+        return Data.getData().allMaterials.stream()
+                .filter(item -> item.name.equals(nam))
+                .findFirst()
+                .orElse(null);
+    }
+
 }

@@ -3,46 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome!</title>
-    <link rel = "stylesheet" href = "css/index.css">
-    <script type="application/javascript" src="js/index.js"></script>
+    <link rel= "stylesheet" href = "css/index.css">
+
 </head>
 
 <body>
     <div class="navbar">
         <nav class="navigation" id="navigation">
             <label class="logo" for="navigation">ACRemember</label>
-            <ul>
-                <li><a href ="index.html">Home</a></li>
-                <li><a href ="materialFill.html">Materials</a></li>
-                <li><a href = "searchCharacter.html">Search</a></li>
-                <li><a href="favouriteCharacter.html">Favourite</a></li>
-                <li><a href ="currentCharacter.html">Current </a></li>
-                <li><a href = "">Items</a></li>
-            </ul>
         </nav>
     </div> <!-- navigation bar-->
 
+
     <main>
-        <div class="login">
-            <h1>Please login</h1>
-            <form id="loginForm">
-                <label for ="username">Username: </label>
-                <input type="text" id="username" name="username">
-
-                <br>
-                <br>
-
-                <label for="password">Password: </label>
-                <input type="password" id="password" name="password">
-
-                <br>
-                <br>
-
-                <input type="button" id="login" value="Login" onclick="login()">
-            </form>
+        <div class="block">
+        <form id="login">
+            <h1>Log in</h1>
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username">
+            <br>
+            <br>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+            <input type = "button" id="loginbutton" value="log in">
+        </form>
         </div>
     </main>
 
 </body>
+<script type="application/javascript" src="js/index.js"></script>
 
 </html>

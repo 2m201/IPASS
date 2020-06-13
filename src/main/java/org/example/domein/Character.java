@@ -48,9 +48,15 @@ public class Character implements Serializable{
     public String getSpecies(){ return species; }
     public String getBirthday(){ return birthday; }
     public String getPicture() { return picture; }
-
     public String getCatchphrase() { return catchphrase; }
     public String getDescription() { return description; }
+
+    public static Character getCharacterByName(String name) {
+        return Data.getData().allCharacters.stream()
+                .filter(item -> item.name.equals(name))
+                .findFirst()
+                .orElse(null);
+    }
 
     public static ArrayList<Character> getAllCharacters() { return Data.getData().allCharacters; }
 
