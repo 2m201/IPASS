@@ -1,3 +1,10 @@
+function logout(){
+    window.sessionStorage.removeItem("myJWT");
+    window.location.href = "/index.html";
+}
+
+
+
 function passVariable(name){
     console.log(name);
     window.localStorage.setItem('name', name);
@@ -39,7 +46,7 @@ function search(event) { // geen eventListener nodig cuz u have onclick
             } else {
                 appendData(data)
             }
-        })
+        }).catch(error => console.log(error))
 
 
 }

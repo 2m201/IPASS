@@ -71,3 +71,17 @@ main {
     outline: none;
     overflow: hidden;
 }
+
+.labels{
+    display: inline-block;
+    width: 100px;
+}
+
+.radio-button {
+    margin-right: 26px;
+    margin-left: 5px;
+}
+
+fieldset {
+    width: 300px;
+}

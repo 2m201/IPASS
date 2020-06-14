@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Character implements Serializable{
+public class Character implements Serializable {
     private String name;
     private String gender;
     private String personality;
@@ -31,10 +31,10 @@ public class Character implements Serializable{
         }
     }
 
-    public static List<Character> searchCharacter(String input){
+    public static List<Character> searchCharacter(String input) {
         List<Character> characterList = new ArrayList<>();
-        for (Character item : Data.getData().allCharacters){
-            if (item.getName().equals(input) || item.getPersonality().equals(input) || item.getSpecies().equals(input)){
+        for (Character item : Data.getData().allCharacters) {
+            if (item.getName().equals(input) || item.getPersonality().equals(input) || item.getSpecies().equals(input)) {
                 System.out.println("The character " + item.getName() + " exists");
                 characterList.add(item);
             }
@@ -42,14 +42,37 @@ public class Character implements Serializable{
         return characterList;
     }
 
-    public String getName() { return name; }
-    public String getGender(){ return gender; }
-    public String getPersonality(){ return personality; }
-    public String getSpecies(){ return species; }
-    public String getBirthday(){ return birthday; }
-    public String getPicture() { return picture; }
-    public String getCatchphrase() { return catchphrase; }
-    public String getDescription() { return description; }
+    public String getName() {
+        return name;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public String getPersonality() {
+        return personality;
+    }
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public String getCatchphrase() {
+        return catchphrase;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public static Character getCharacterByName(String name) {
         return Data.getData().allCharacters.stream()
@@ -58,15 +81,61 @@ public class Character implements Serializable{
                 .orElse(null);
     }
 
-    public static ArrayList<Character> getAllCharacters() { return Data.getData().allCharacters; }
+    public static ArrayList<Character> getAllCharacters() {
+        return Data.getData().allCharacters;
+    }
 
-    public void setName(String name) { this.name = name;}
-    public void setGender(String gender) { this.gender = gender;}
-    public void setPersonality(String personality){ this.personality = personality; }
-    public void setSpecies(String species){ this.species = species; }
-    public void setBirthday(String birthday) { this.birthday = birthday; }
-    public void setPicture(String picture) {this.picture = picture;}
-    public void setCatchphrase(String catchphrase) { this.catchphrase = catchphrase; }
-    public void setDescription(String description) { this.description = description; }
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPersonality(String personality) {
+        this.personality = personality;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public void setCatchphrase(String catchphrase) {
+        this.catchphrase = catchphrase;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public static boolean deleteCharacter(String name) {
+        for (Character item : Data.getData().getAllCharacters()) {
+            if (item.getName().equals(name)) {
+                Data.getData().allCharacters.remove(item);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean changeCharacter(String character, String name, String gender, String personality, String species, String birthday, String catchphrase, String description) {
+        for (Character item : Data.getData().getAllCharacters()) {
+            if (item.getName().equals(character)) {
+                Data.getData().allCharacters.remove(item);
+                Character c1= new Character (name, gender, personality, species, birthday, catchphrase, description);
+                return true;
+            }
+        }
+        return false;
+    }
 
 }

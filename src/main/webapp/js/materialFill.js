@@ -8,6 +8,12 @@ function hide(){
     document.getElementById("changeMaterialForm").style.display = "none";
     addMaterials();
 }
+function logout(){
+    window.sessionStorage.removeItem("myJWT");
+    window.location.href = "/index.html";
+}
+
+
 
 function getMaterials(){
     fetch("restservices/materials", {method : 'GET'})
@@ -17,7 +23,7 @@ function getMaterials(){
         })
         .then(function(myJson){
             console.log(myJson)
-        });
+        }).catch(error => console.log(error))
 }
 
 function appendData(data){

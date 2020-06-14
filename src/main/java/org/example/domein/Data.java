@@ -2,6 +2,8 @@ package org.example.domein;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Data implements Serializable {
     protected ArrayList<Character> allCharacters = new ArrayList<>();
@@ -19,8 +21,8 @@ public class Data implements Serializable {
         allAccounts.clear();
         }
 
-    public ArrayList<Character> getAllCharacters(){
-        return allCharacters;
+    public List<Character> getAllCharacters(){
+        return  Collections.unmodifiableList(allCharacters);
     }
 
 }

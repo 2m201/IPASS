@@ -78,7 +78,8 @@ main {
 }
 
 .radio-button {
-    width: 50px;
+    margin-right: 26px;
+    margin-left: 5px;
 }
 button{
     margin-right: 0;

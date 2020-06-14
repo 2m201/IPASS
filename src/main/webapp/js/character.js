@@ -28,7 +28,7 @@ function getCharacter() {
         })
         .then(function (myJson) {
             console.log(myJson)
-        });
+        }).catch(error => console.log(error))
 
 }
 
@@ -52,3 +52,9 @@ function saveCharacter(){
             }
         }).catch(error => console.log(error));
 }
+
+function logout(){
+    window.sessionStorage.removeItem("myJWT");
+    window.location.href = "/index.html";
+}
+
