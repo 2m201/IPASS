@@ -4,6 +4,7 @@ import org.example.domein.Account;
 import org.example.domein.Character;
 import org.example.domein.Data;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -63,7 +64,7 @@ public class CharactersResource {
         boolean deleted = Character.changeCharacter(changeName, name, gender, personality, species, birthday, catchphrase, description);
 
         if (deleted){
-            return Response.ok().build();
+            return Response.ok("Character has been modified.").build();
         }
         return Response.status(404).entity(new AbstractMap.SimpleEntry<String, String>("error", "Character does not exist")).build();
 
@@ -75,10 +76,18 @@ public class CharactersResource {
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteCharacter(@PathParam("name") String name) {
+        if (name.isEmpty()) {
+            return Response.status(400).entity(new AbstractMap.SimpleEntry<String, String>("error", "Please fill in the field")).build();
+
+        }
+
+        System.out.println("Name " + name);
         boolean deleted = Character.deleteCharacter(name);
 
+        System.out.println("deleted " + deleted);
+
         if (deleted){
-            return Response.ok().build();
+            return Response.ok("Character has been deleted").build();
         }
         return Response.status(404).entity(new AbstractMap.SimpleEntry<String, String>("error", "Character does not exist")).build();
 
@@ -89,7 +98,7 @@ public class CharactersResource {
     @Path("/save/{list}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveCharacterToList(@Context SecurityContext user, @PathParam("list") String type, @FormParam("characterName") String name) {
-        Account u1 = Account.getAccountByName(user.getUserPrincipal().getName());
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
         Character c1 = Character.getCharacterByName(name);
 
         if (type.equals("current")) {

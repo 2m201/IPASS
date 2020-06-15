@@ -67,17 +67,12 @@ public class Account implements Principal, Serializable {
 
     @Override
     public String getName(){ return username; }
+
     public String getRole(){ return role; }
 
-    public static Account getAccountByName(String name){
-        return Data.getData().allAccounts.stream()
-                .filter(item -> item.username.equals(name))
-                .findFirst()
-                .orElse(null);
-    }
 
     public static String validateLogin(String username, String password){
-        Account found = getAccountByName(username);
+        Account found = Data.getData().getAccountByName(username);
         if (found != null){
             return password.equals(found.password) ? found.getRole() : null;
         }
@@ -85,12 +80,31 @@ public class Account implements Principal, Serializable {
     }
 
     public HashMap<Material, Integer> getSavedMaterials(){ return savedMaterials;}
-
     public ArrayList<Character> getCurrentCharacters() {
         return currentCharacter;
     }
-
     public ArrayList<Character> getFavouriteCharacters() {
         return favouriteCharacter;
     }
-}
+
+    public void setPassword(String oldPassword, String newPassword) throws Exception {
+        if (!(oldPassword.isEmpty() || newPassword.isEmpty())) {
+            if (!(oldPassword.equals(newPassword))) {
+                if (oldPassword.equals(this.password)) {
+                    if (newPassword.length() > 8) {
+                        this.password = newPassword;
+                    } else {
+                        throw new Exception("The new password has to be at least 8 characters long");
+                    }
+                } else {
+                    throw new Exception("The old password is not correct");
+                }
+            }
+            else {throw new Exception("Please fill in different passwords");}
+        } else {throw new Exception("Please fill in all the fields");}
+    }
+
+    public String getPassword() { return password; }}
+
+
+

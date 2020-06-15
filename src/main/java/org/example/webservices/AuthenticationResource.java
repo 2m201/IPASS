@@ -5,6 +5,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.impl.crypto.MacProvider;
 import org.example.domein.Account;
+import org.example.domein.Data;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -38,13 +39,13 @@ public class AuthenticationResource {
         }
 
         try {
-            if (Account.getAccountByName(username) == null){
+            if (Data.getData().getAccountByName(username) == null){
                 return Response.status(404).entity(new AbstractMap.SimpleEntry<String, String>("error", "Account doesn't exist")).build();
             }
 
             String role = Account.validateLogin(username, password);
             if (role==null){
-                return Response.status(409).entity(new AbstractMap.SimpleEntry<String, String>("error", "Account doesn't exist")).build();
+                return Response.status(409).entity(new AbstractMap.SimpleEntry<String, String>("error", "Wrong password")).build();
             }
             String token = createToken(username, role);
             System.out.println(username + role);

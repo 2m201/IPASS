@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Your account</title>
-    <link rel = "stylesheet" href = "css/welcomePage.css">
+    <link rel = "stylesheet" href = "css/account.css">
 
 </head>
 
@@ -12,8 +12,8 @@
         <nav class="navigation" id="navigation">
             <label class="logo" for="navigation">ACRemember</label>
             <ul>
-                <li><a href ="welcomePage.html.html">Home</a></li>
-                <li><a href ="materialFill.html">Materials</a></li> <!-- NEEDS TO GO TO ACCOUNT PAGE-->
+                <li><a href ="welcomePage.html">Home</a></li>
+                <li><a href ="materialFill.html">Materials</a></li>
                 <li><a href = "searchCharacter.html">Search</a></li>
                 <li><a href="account.html">Account</a></li>
                 <li><a href = "">Items</a></li>
@@ -26,5 +26,32 @@
 
 <body>
 
+    <main>
+        <div>
+            <form id="PATCHAccount">
+                <h1>Change your password</h1>
+                <fieldset>
+                    <legend hidden>Change password</legend>
+                    <br>
+                    <label for="oldPassword">Old password: </label>
+                    <input type="password" id="oldPassword" name="oldPassword">
+
+                    <br>
+                    <br>
+
+                    <label for="newPassword">New password: </label>
+                    <input type="password" id="newPassword" name="newPassword">
+
+                    <br>
+                    <br>
+
+                    <input type="button" id="changePasswordButton" value="Change" name="changePasswordButton" onclick="saveNewPassword()">
+                </fieldset>
+            </form>
+        </div>
+    </main>
+
 </body>
+<script type="application/javascript" src="js/account.js"></script>
+
 </html>

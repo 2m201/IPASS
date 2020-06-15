@@ -1,8 +1,10 @@
 package org.example.webservices;
 
 import org.example.domein.Account;
+import org.example.domein.Data;
 import org.example.domein.Material;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
@@ -16,7 +18,7 @@ public class MaterialResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMaterials(@Context SecurityContext user){
-        Account u1 = Account.getAccountByName(user.getUserPrincipal().getName());
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
         HashMap<Material, Integer> list = u1.getSavedMaterials();
 
         return Response.ok(list).build();
@@ -25,7 +27,7 @@ public class MaterialResource {
     @PATCH
     @Produces(MediaType.APPLICATION_JSON)
     public Response addMaterials(@Context SecurityContext user, @FormParam("softwood") int softwood, @FormParam("ironnugget") int ironnugget, @FormParam("treebranch") int treebranch, @FormParam("wood") int wood, @FormParam("clay") int clay, @FormParam("hardwood") int hardwood, @FormParam("goldnugget") int goldnugget, @FormParam("stone") int stone, @FormParam("starfragment") int starfragment, @FormParam("clumpofweeds") int clumpofweeds){
-        Account u1 = Account.getAccountByName(user.getUserPrincipal().getName());
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
 
          HashMap<Material, Integer> materials = new HashMap<>();
          materials.put(Material.getMaterialByName("Soft wood"), softwood);

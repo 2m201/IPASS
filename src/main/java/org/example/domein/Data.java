@@ -22,8 +22,20 @@ public class Data implements Serializable {
         }
 
     public List<Character> getAllCharacters(){
-        return  Collections.unmodifiableList(allCharacters);
+        return Collections.unmodifiableList(allCharacters);
     }
+
+    public List<Account> getAllAccounts(){
+        return  Collections.unmodifiableList(allAccounts);
+    }
+
+    public Account getAccountByName(String name){
+        return getAllAccounts().stream()
+                .filter(item -> item.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
 
 }
 

@@ -5,6 +5,7 @@ import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import org.example.domein.Account;
+import org.example.domein.Data;
 import org.example.webservices.AuthenticationResource;
 
 import javax.annotation.Priority;
@@ -31,7 +32,7 @@ public class AuthenticationFilter implements ContainerRequestFilter {
                 JwtParser parser = Jwts.parser().setSigningKey(AuthenticationResource.key);
                 Claims claims = parser.parseClaimsJws(token).getBody();
                 String user = claims.getSubject();
-                msc = new MySecurityContext(Account.getAccountByName(user), scheme);
+                msc = new MySecurityContext(Data.getData().getAccountByName(user), scheme);
             } catch (JwtException | IllegalArgumentException e) {
                 System.out.println("Invalid JWT, processing as guest!");
             }

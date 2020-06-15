@@ -58,3 +58,5 @@ a.active,a:hover{
     color: 	black;
     transition: .5s;
 }
+
+main {margin-top: 60px;}
