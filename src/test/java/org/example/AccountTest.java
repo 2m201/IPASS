@@ -36,12 +36,12 @@ class AccountTest {
     void changingRoleToAdmin(){
         Account a4 = new Account("Kiki@deliveryservice.com", "rakakakakakaka", "Annemae van de Hoef");
         Account.setAdministrator(a4);
-        assertEquals("Admin", a4.getRole());
+        assertEquals("admin", a4.getRole());
     }
 
     @Test
     void addMaterialsToList(){
-        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie"); //ask mae why it works for a5 but not for a1??
+        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie"); 
         Material m1 = new Material("Softwood");
         Material m2 = new Material ("Stone");
 

@@ -36,6 +36,17 @@ public class Data implements Serializable {
                 .orElse(null);
     }
 
+    public Character getCharacterByName(String name){
+        return getAllCharacters().stream()
+                .filter(item -> item.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public void clearCharacterList(){
+        allCharacters.clear();
+    }
+
 
 }
 

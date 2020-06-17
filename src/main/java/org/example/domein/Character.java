@@ -1,6 +1,8 @@
 package org.example.domein;
 
+import java.awt.*;
 import java.io.Serializable;
+import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,80 +44,25 @@ public class Character implements Serializable {
         return characterList;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
+    public String getGender() { return gender; }
+    public String getPersonality() { return personality; }
+    public String getSpecies() { return species; }
+    public String getBirthday() { return birthday; }
+    public String getPicture() { return picture; }
+    public String getCatchphrase() { return catchphrase; }
+    public String getDescription() { return description; }
 
-    public String getGender() {
-        return gender;
-    }
+    public static ArrayList<Character> getAllCharacters() { return Data.getData().allCharacters; }
 
-    public String getPersonality() {
-        return personality;
-    }
-
-    public String getSpecies() {
-        return species;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public String getCatchphrase() {
-        return catchphrase;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public static Character getCharacterByName(String name) {
-        return Data.getData().allCharacters.stream()
-                .filter(item -> item.name.equals(name))
-                .findFirst()
-                .orElse(null);
-    }
-
-    public static ArrayList<Character> getAllCharacters() {
-        return Data.getData().allCharacters;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public void setPersonality(String personality) {
-        this.personality = personality;
-    }
-
-    public void setSpecies(String species) {
-        this.species = species;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
-    }
-
-    public void setCatchphrase(String catchphrase) {
-        this.catchphrase = catchphrase;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    public void setName(String name) { this.name = name; }
+    public void setGender(String gender) { this.gender = gender; }
+    public void setPersonality(String personality) { this.personality = personality; }
+    public void setSpecies(String species) { this.species = species; }
+    public void setBirthday(String birthday) { this.birthday = birthday; }
+    public void setPicture(String picture) { this.picture = picture; }
+    public void setCatchphrase(String catchphrase) { this.catchphrase = catchphrase; }
+    public void setDescription(String description) { this.description = description; }
 
     public static boolean deleteCharacter(String name) {
         for (Character item : Data.getData().getAllCharacters()) {
@@ -127,15 +74,36 @@ public class Character implements Serializable {
         return false;
     }
 
-    public static boolean changeCharacter(String character, String name, String gender, String personality, String species, String birthday, String catchphrase, String description) {
-        for (Character item : Data.getData().getAllCharacters()) {
-            if (item.getName().equals(character)) {
-                Data.getData().allCharacters.remove(item);
-                Character c1= new Character (name, gender, personality, species, birthday, catchphrase, description);
-                return true;
-            }
+    public static void changeCharacter(String character, String name, String URL, String gender, String personality,
+                                       String species, String birthday, String catchphrase, String description) throws Exception {
+        System.out.println( " yee" + name);
+        Character character1 = Data.getData().getCharacterByName(character);
+
+        System.out.println("yeet");
+
+        if (!(URL.isEmpty())) {
+            character1.setPicture(URL);
         }
-        return false;
-    }
+        if (!(gender.isEmpty())) {
+            character1.setGender(gender);
+        }
+        if (!(personality.isEmpty())) {
+            character1.setPersonality(personality);
+        }
+        if (!(species.isEmpty())) {
+            character1.setSpecies(species);
+        }
+        if (!(birthday.isEmpty())) {
+            character1.setBirthday(birthday);
+        }
+        if (!(catchphrase.isEmpty())) {
+            character1.setCatchphrase(catchphrase);
+        }
+        if (!(description.isEmpty())) {
+            character1.setDescription(description);
+        }
+
+        } //TODO NOT DONE YET  ERROR HANDLING TO BE DONE
+
 
 }

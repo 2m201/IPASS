@@ -14,14 +14,13 @@ class CharacterTest {
 
     @BeforeEach
     public void init(){
-        //Data.resetData();
-       // k1 = new Character("Kiki", "Female", "Normal", "Cat", "October 8");
+        k1 = new Character("Kiki", "Female", "Normal", "Cat", "October 8", "Yee" , "yes");
         System.out.println("TEST");
     }
 
     @Test
     void creatingTheSameCharacter(){
-       // k2 = new Character("Kiki", "Female", "Normal", "Cat", "October 8");
+        k2 = new Character("Kiki", "Female", "Normal", "Cat", "October 8", "Yee" , "yes");
         assertEquals(1, Character.getAllCharacters().size());
     }
 

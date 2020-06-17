@@ -20,7 +20,6 @@ public class AccountResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response changePassword(@Context SecurityContext user, @FormParam("oldPassword") String oldP, @FormParam("newPassword") String newP)  {
         try {
-            String naam = user.getUserPrincipal().getName();
             Account account = Data.getData().getAccountByName(user.getUserPrincipal().getName());
             System.out.println("name " + account.getName());
 
