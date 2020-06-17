@@ -23,7 +23,7 @@ function login(event){
         if (userRole === "admin"){
             window.location.href = "/adminWelcomePage.html"}
         else{
-            window.location.href = "/welcomePage.html"
+            window.location.href = "/account.html"
         }}
             )
         .catch(error => console.log(error))

@@ -41,7 +41,7 @@ class AccountTest {
 
     @Test
     void addMaterialsToList(){
-        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie"); 
+        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie");
         Material m1 = new Material("Softwood");
         Material m2 = new Material ("Stone");
 
