@@ -1,67 +1,91 @@
+// const swood =document.getElementById("softwood").value;
+// const inugget =document.getElementById("ironnugget").value;
+// const tbranch =document.getElementById("treebranch").value;
+// const rwood =document.getElementById("wood").value;
+// const rclay =document.getElementById("clay").value;
+// const hwood =document.getElementById("hardwood").value;
+// const gnugget =document.getElementById("goldnugget").value;
+// const rstone =document.getElementById("stone").value;
+// const sfragment =document.getElementById("starfragment").value;
+// const weeds =document.getElementById("clumpofweeds").value;
+
 
 function show(){
     document.getElementById("materialSection").style.display = "none";
     document.getElementById("changeMaterialForm").style.display = "block";
 }
-function hide(){
-    document.getElementById("materialSection").style.display = "block";
-    document.getElementById("changeMaterialForm").style.display = "none";
-    addMaterials();
-}
+
 function logout(){
     window.sessionStorage.removeItem("myJWT");
     window.location.href = "/index.html";
 }
 
+function appendData(data){
+
+    console.log("Clump" + data["Clump of weeds"]);
+
+        document.getElementById("Soft wood").textContent = data["Soft wood"];
+        document.getElementById("Tree branch").textContent = data["Tree branch"];
+        document.getElementById("Clay").textContent = data["Clay"];
+        document.getElementById("Gold nugget").textContent = data["Gold nugget"];
+        document.getElementById("Star fragment").textContent = data["Star fragment"];
+        document.getElementById("Iron nugget").textContent = data["Iron nugget"];
+        document.getElementById("Wood").textContent = data["Wood"];
+        document.getElementById("Hard wood").textContent = data["Hard wood"];
+        document.getElementById("Stone").textContent = data["Stone"];
+        document.getElementById("Clump of weeds").textContent = data["Clump of weeds"];
+
+        window.location.href = "/materialFill.html";
+
+    }
+
+
 
 
 function getMaterials(){
-    fetch("restservices/materials", {method : 'GET'})
+    let fetchoptions = { method: 'GET', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+    fetch("restservices/materials",fetchoptions)
         .then(response => response.json())
         .then(function(data) {
+            console.log("Get data: " + data);
+
             appendData(data)
         })
-        .then(function(myJson){
-            console.log(myJson)
-        }).catch(error => console.log(error))
+        .catch(error => console.log(error))
 }
 
-function appendData(data){
-    if (isEmpty(data)) {
-        document.getElementById("softwoodTable").textContent = "0";
-        document.getElementById("treebranchTable").textContent = "0";
-        document.getElementById("clayTable").textContent = "0";
-        document.getElementById("goldnuggetTable").textContent = "0";
-        document.getElementById("starfragmentTable").textContent = "0";
-        document.getElementById("ironnuggetTable").textContent = "0";
-        document.getElementById("woodTable").textContent = "0";
-        document.getElementById("hardwoodTable").textContent = "0";
-        document.getElementById("stoneTable").textContent = "0";
-        document.getElementById("clumpofweedsTable").textContent = "0";
-    }
 
-}
 
-function isEmpty(obj){
-    for (let key in obj){
-        if (obj.hasOwnProperty(key)){
-            return false;
-        }
-    }
-    return true;
-}
+function addMaterials() { //works
 
-function addMaterials(){
-    let formData = new FormData(document.querySelector("#POSTmaterialForm"));
-    let encData = new URLSearchParams(formData.entries());
 
-    console.log(encData);
+        let formData = new FormData(document.querySelector("#PATCHmaterialForm"));
+        let encData = new URLSearchParams(formData.entries());
+        console.log(encData);
+        let fetchoptions = {
+            method: 'PATCH',
+            body: encData,
+            headers: {'Authorization': 'Bearer ' + window.sessionStorage.getItem("myJWT")}
+        };
 
-    fetch("restservices/materials", {method: 'PATCH', body : encData})
-        .then(function(response){
-            if (response.ok) {console.log("it works")}
-            else if (response.status === 400) {window.alert("Fill everything in.")}
-        }).catch( error => console.log(error));
+        console.log(encData);
+
+        fetch("restservices/materials", fetchoptions)
+            .then(async response => {
+                if (response.status === 200) {
+                    window.alert("The materials have been added");
+                    return response;
+                }
+            })
+            .then(response => response.json())
+            .then(function (data) {
+                appendData(data)
+
+            })
+            .then(function (myJson) {
+            }).catch(error => console.log(error))
+
 }
 
     // document.querySelector("#confirmation").addEventListener("click", function(){

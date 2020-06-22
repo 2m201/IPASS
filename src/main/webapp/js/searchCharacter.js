@@ -32,7 +32,7 @@ function appendData(data) {
 
 }
 
-function search(event) { // geen eventListener nodig cuz u have onclick
+function search(name) { // geen eventListener nodig cuz u have onclick
 
     window.addEventListener('error', function(e){window.alert("The character does not exist");}, true);
 
@@ -48,5 +48,5 @@ function search(event) { // geen eventListener nodig cuz u have onclick
             }
         }).catch(error => console.log(error))
 
-
 }
+

@@ -17,3 +17,41 @@ function saveNewPassword(){
         .catch(error => console.log(error))
 
 }
+
+function loadInformation(){
+    getCurrentCharacters();
+    getFavouriteCharacters();
+}
+
+function getCurrentCharacters(){
+    let fetchoptions = { method: 'GET', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+
+    fetch("restservices/characers/current", fetchoptions)
+        .then(async response => {
+            if (response.status === 200) {console.log("Characters are being shown");
+                return response.json()}
+            else { const JSON = await response.json();
+                window.alert(JSON.error);
+                console.log(JSON.error)}
+        }).then(function(data) {
+        appendCharacters(data);
+    })
+        .catch(error => console.log(error))
+}
+
+function getFavouriteCharacters(){
+    let fetchoptions = { method: 'GET', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+    fetch("restservices/characers/favourite", fetchoptions)
+        .then(async response => {
+            if (response.status === 200) {console.log("Characters are being shown");
+                return response.json()}
+            else { const JSON = await response.json();
+                window.alert(JSON.error);
+                console.log(JSON.error)}
+        }).then(function(data) {
+        appendCharacters(data);
+    })
+        .catch(error => console.log(error))
+}

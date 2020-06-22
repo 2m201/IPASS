@@ -57,7 +57,7 @@ public class CharactersResource {
     @RolesAllowed("admin")
     @PATCH
     @Path("{charName}")
-    @Produces(MediaType.APPLICATION_JSON)  //TODO response.ok only when all fields are filled in
+    @Produces(MediaType.APPLICATION_JSON)
     public Response changeCharacter(@PathParam("charName") String changeName, @FormParam("characterName") String name, @FormParam("characterURL") String URL, @FormParam("gender") String gender,
                                     @FormParam("characterSpecies") String species, @FormParam("characterPersonality") String personality, @FormParam("characterBirthday") String birthday,
                                     @FormParam("characterCatchphrase") String catchphrase, @FormParam("characterDescription") String description)  {
@@ -126,30 +126,57 @@ public class CharactersResource {
 
     }
 
-
-    @POST
-    @Path("/save/{list}")
+    @RolesAllowed("user")
+    @PATCH
+    @Path("save/{list}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveCharacterToList(@Context SecurityContext user, @PathParam("list") String type, @FormParam("characterName") String name) {
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
         Character c1 = Data.getData().getCharacterByName(name);
 
-        if (type.equals("current")) {
-            if (u1.getCurrentCharacters().size() == 10) {
-                return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", "List has reached max capacity")).build();
-            } else{
-                u1.addCurrentCharacter(c1);
-                return Response.ok(u1).build();
-            }
-        } else if (type.equals("favourite")) {
-            u1.addFavouriteCharacter(c1);
+        System.out.println("list: " + type);
+        System.out.println("name: " + name);
+
+        try {
+            u1.addCharacter(type, c1);
+//            if (type.equals("current")) {
+//                if (u1.getCurrentCharacters().size() >= 9) {
+//                    throw new Exception("List has reached max capacity");
+//                } else {
+//                    u1.addCurrentCharacter(c1);
+//                    return Response.ok(u1).build();
+//                }
+//            } else if (type.equals("favourite")) {
+//                u1.addFavouriteCharacter(c1);
+//                return Response.ok(u1).build();
+//            }
             return Response.ok(u1).build();
+        }catch (Exception e ) {
+            return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
+
         }
 
-        return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Something went wrong")).build();
+//        return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Something went wrong")).build();
 
 
     }
 
+    @GET
+    @Path("current")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getCurrentCharacter(@Context SecurityContext user) {
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
 
+        return Response.ok(u1.getCurrentCharacters()).build();
+    }
+    
+    @GET
+    @Path("favourite")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getFavouriteCharacter(@Context SecurityContext user) {
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
+
+        return Response.ok(u1.getFavouriteCharacters()).build();
+
+    }
 }

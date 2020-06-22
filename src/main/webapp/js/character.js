@@ -24,7 +24,9 @@ function getCharacter() {
     fetch("restservices/characters/" + NAME, {method: 'GET'})//with GET-method, no body is sent. So no need for a formData or encData.
         .then(response => response.json())
         .then(function (data) {
+            console.log(data);
             appendData(data)
+
         })
         .then(function (myJson) {
             console.log(myJson)
@@ -39,22 +41,28 @@ function saveCharacter(){
 
     let formData = new FormData(document.querySelector('#charFORM'));
     let encData = new URLSearchParams(formData.entries());
+    let fetchoptions = { method: 'PATCH', body: encData, headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
 
-    console.log("encdata: " + encData);
-    fetch("restservices/characters/save" + list, {method: 'POST', body: encData})
-        .then (function(response) {
-            if (response.ok) {
-                console.log("it workie");
-            } else if (response.status === 409) {
-                window.alert("The max capacity of current villagers has been reached.")
-            } else if (response.status === 400) {
-                window.alert("Something went wrong.")
-            }
-        }).catch(error => console.log(error));
+
+    fetch("restservices/characters/save/" + list, fetchoptions)
+        .then(async response => {
+            if (response.status === 200) {window.alert("The character has been added");
+                console.log("it has been modified")}
+            else { const JSON = await response.json();
+                window.alert(JSON.error);
+                console.log(JSON.error)}
+        })
+        .catch(error => console.log(error))
 }
 
 function logout(){
     window.sessionStorage.removeItem("myJWT");
     window.location.href = "/index.html";
+}
+
+function previousPage(){
+    history.back();
+    // const NAME = localStorage['name'];
+    // window.location.href = "/characters/" + NAME;
 }
 

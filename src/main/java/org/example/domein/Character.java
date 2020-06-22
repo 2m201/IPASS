@@ -1,8 +1,6 @@
 package org.example.domein;
 
-import java.awt.*;
 import java.io.Serializable;
-import java.security.spec.ECField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,37 +71,5 @@ public class Character implements Serializable {
         }
         return false;
     }
-
-    public static void changeCharacter(String character, String name, String URL, String gender, String personality,
-                                       String species, String birthday, String catchphrase, String description) throws Exception {
-        System.out.println( " yee" + name);
-        Character character1 = Data.getData().getCharacterByName(character);
-
-        System.out.println("yeet");
-
-        if (!(URL.isEmpty())) {
-            character1.setPicture(URL);
-        }
-        if (!(gender.isEmpty())) {
-            character1.setGender(gender);
-        }
-        if (!(personality.isEmpty())) {
-            character1.setPersonality(personality);
-        }
-        if (!(species.isEmpty())) {
-            character1.setSpecies(species);
-        }
-        if (!(birthday.isEmpty())) {
-            character1.setBirthday(birthday);
-        }
-        if (!(catchphrase.isEmpty())) {
-            character1.setCatchphrase(catchphrase);
-        }
-        if (!(description.isEmpty())) {
-            character1.setDescription(description);
-        }
-
-        } //TODO NOT DONE YET  ERROR HANDLING TO BE DONE
-
 
 }

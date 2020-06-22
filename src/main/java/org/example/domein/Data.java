@@ -47,6 +47,10 @@ public class Data implements Serializable {
         allCharacters.clear();
     }
 
+    public void clearAccountList(){
+        allAccounts.clear();
+    }
+
 
 }
 

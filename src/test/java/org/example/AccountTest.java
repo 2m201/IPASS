@@ -17,40 +17,40 @@ class AccountTest {
     @BeforeEach
     public void init(){
         Data.getData().resetData();
-        Account a1 = new Account("melaniekelley@hotmail.com", "melaniekelleey", "Melanie Kelley");
+        Account a1 = new Account("melaniekelley@hotmail.com", "melaniekelleey");
     }
 
     @Test
     void creatingTheSameAccount(){
-        Account a2 = new Account("melaniekelley@hotmail.com", "melaniekelleey", "Melanie Kelley");
+        Account a2 = new Account("melaniekelley@hotmail.com", "melaniekelleey");
         //assertEquals(1, Data.getData().allAccounts.size() );
     }
 
     @Test
     void passwordTooShort(){
-        Account a3 = new Account("a.b.a.vandehoef@hotmail.com", "annemae", "Annemae van de Hoef");
+        Account a3 = new Account("a.b.a.vandehoef@hotmail.com", "annemae");
         //assertEquals(1, Data.allAccounts.size() );
     }
 
     @Test
     void changingRoleToAdmin(){
-        Account a4 = new Account("Kiki@deliveryservice.com", "rakakakakakaka", "Annemae van de Hoef");
+        Account a4 = new Account("Kiki@deliveryservice.com", "rakakakakakaka");
         Account.setAdministrator(a4);
         assertEquals("admin", a4.getRole());
     }
 
-    @Test
-    void addMaterialsToList(){
-        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee", "Melanie");
-        Material m1 = new Material("Softwood");
-        Material m2 = new Material ("Stone");
-
-        HashMap<Material, Integer> list = new HashMap<>();
-        list.put(m1, 3);
-        list.put(m2,7);
-        a5.addSavedMaterials(list);
-        assertEquals(2, a5.getSavedMaterials().size());
-    }
+//    @Test
+//    void addMaterialsToList(){
+//        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee");
+//        Material m1 = new Material("Softwood");
+//        Material m2 = new Material ("Stone");
+//
+//        HashMap<Material, Integer> list = new HashMap<>();
+//        list.put(m1, 3);
+//        list.put(m2,7);
+//        a5.addSavedMaterials(list);
+//        assertEquals(2, a5.getSavedMaterials().size());
+//    }
 
     @Test
     void addCharacterTwice(){
