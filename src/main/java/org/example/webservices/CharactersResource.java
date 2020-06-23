@@ -169,7 +169,7 @@ public class CharactersResource {
 
         return Response.ok(u1.getCurrentCharacters()).build();
     }
-    
+
     @GET
     @Path("favourite")
     @Produces(MediaType.APPLICATION_JSON)

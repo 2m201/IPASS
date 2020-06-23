@@ -35,22 +35,22 @@ public class MaterialResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addMaterials(@Context SecurityContext user, @FormParam("softwood") int softwood, @FormParam("ironnugget") int ironnugget, @FormParam("treebranch") int treebranch, @FormParam("wood") int wood, @FormParam("clay") int clay, @FormParam("hardwood") int hardwood, @FormParam("goldnugget") int goldnugget, @FormParam("stone") int stone, @FormParam("starfragment") int starfragment, @FormParam("clumpofweeds") int clumpofweeds){
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
-        System.out.println("Stone: " + stone);
+        System.out.println("Softwood: " + softwood);
         //TODO check if every input is empty
         try {
             HashMap<Material, Integer> materials = new HashMap<>();
 
-            if (!(softwood == 0)) {materials.put(Material.getMaterialByName("Soft wood"), softwood); }
-            if (!(ironnugget == 0)){ materials.put(Material.getMaterialByName("Iron nugget"), ironnugget);}
-            if (!(treebranch == 0)) {materials.put(Material.getMaterialByName("Tree branch"), treebranch); }
-            if (!(wood == 0)) {materials.put(Material.getMaterialByName("Wood"), wood);}
-            if (!(clay == 0)) {materials.put(Material.getMaterialByName("Clay"), clay);}
+            if (!(softwood == -1)) {materials.put(Material.getMaterialByName("Soft wood"), softwood); }
+            if (!(ironnugget == -1)){ materials.put(Material.getMaterialByName("Iron nugget"), ironnugget);}
+            if (!(treebranch == -1)) {materials.put(Material.getMaterialByName("Tree branch"), treebranch); }
+            if (!(wood == -1)) {materials.put(Material.getMaterialByName("Wood"), wood);}
+            if (!(clay == -1)) {materials.put(Material.getMaterialByName("Clay"), clay);}
 
-            if (!(hardwood == 0)) {materials.put(Material.getMaterialByName("Hard wood"), hardwood);}
-            if (!(goldnugget == 0)) {materials.put(Material.getMaterialByName("Gold nugget"), goldnugget);}
-            if (!(stone == 0)) {materials.put(Material.getMaterialByName("Stone"), stone);}
-            if (!(starfragment == 0)) {materials.put(Material.getMaterialByName("Star fragment"), starfragment); }
-            if (!(clumpofweeds == 0)) {materials.put(Material.getMaterialByName("Clump of weeds"), clumpofweeds);}
+            if (!(hardwood == -1)) {materials.put(Material.getMaterialByName("Hard wood"), hardwood);}
+            if (!(goldnugget == -1)) {materials.put(Material.getMaterialByName("Gold nugget"), goldnugget);}
+            if (!(stone == -1)) {materials.put(Material.getMaterialByName("Stone"), stone);}
+            if (!(starfragment == -1)) {materials.put(Material.getMaterialByName("Star fragment"), starfragment); }
+            if (!(clumpofweeds == -1)) {materials.put(Material.getMaterialByName("Clump of weeds"), clumpofweeds);}
 
             u1.addSavedMaterials(materials);
             return Response.ok(u1.getSavedMaterials()).build();

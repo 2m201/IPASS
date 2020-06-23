@@ -1,5 +1,5 @@
 body{
-    background-color: #e5f5dc;
+    background-color: #FEFEFA;
     font-family: "Roboto Thin";
 }
 
@@ -17,7 +17,7 @@ body{
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    background: #287d5d;
+    background: #4c80bb;
     width : 100%;
     height: 50px;
 }
@@ -49,14 +49,62 @@ nav ul li a{
     padding: 7px 10px;
     border-radius: 3px;
     color: white;
-    font-size: 17px;
+    font-size: 20px;
     text-transform: uppercase;
 }
 
 a.active,a:hover{
-    background: #BDECB6;
+    background: #89ABE3FF;
     color: 	black;
     transition: .5s;
 }
 
 main {margin-top: 60px;}
+
+#currentCharacters, #favouriteCharacters{
+    font-size: 1.6em;
+    text-decoration: none;
+}
+
+#favouriteCharacters nav li, #currentCharacters nav li  {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: white;
+    width: 250px;
+    margin: 10px;
+    background-color: #2BAE66FF;
+}
+#favouriteCharacters nav li a , #currentCharacters nav li a{
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+
+#accountSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+
+}
+
+.firstLabel {
+    display: inline-block;
+    width: 200px;
+}
+
+#confirmation {
+    right: 200px;
+}
+
+#dialogH2 {
+    text-align: center;
+}
+
+.materialTable {
+    border-collapse: collapse;
+    margin: 25px;
+    font-size: 0.9em;
+    min-width: 400px;
+}
+.materialTable thead tr {
+    background-color: #2BAE66FF;
+}
