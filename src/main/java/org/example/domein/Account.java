@@ -104,6 +104,32 @@ public class Account implements Principal, Serializable {
         return null;
     }
 
+//    public boolean deleteFavourite ()
+
+    public boolean deleteCharacter(String list, String name) {
+
+
+        if (list.equals("favourite")) {
+            for (Character item : favouriteCharacter) {
+                if (item.getName().equals(name)) {
+                    favouriteCharacter.remove(item);
+                    return true;
+                }
+            }
+            return false;
+        } else if (list.equals("current")) {
+
+            for (Character item : currentCharacter) {
+                if (item.getName().equals(name)) {
+                    currentCharacter.remove(item);
+                    return true;
+                }
+            }
+            return false;
+        }
+        return false;
+    }
+
 //    public void addFavouriteCharacter(Character character){
 //        if (favouriteCharacter.contains(character)){
 //            System.out.println("The character you are trying to add already has been added!");

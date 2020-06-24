@@ -38,7 +38,10 @@ function search(name) { // geen eventListener nodig cuz u have onclick
 
     let character = document.querySelector("#searchCharacter").value;
 
-    fetch("restservices/characters/" + character, {method: 'GET'})//with GET-method, no body is sent. So no need for a formData or encData.
+    let fetchoptions = { method: 'GET', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+
+    fetch("restservices/characters/" + character, fetchoptions)//with GET-method, no body is sent. So no need for a formData or encData.
         .then(response => response.json())
         .then(function (data) {
             if (data.error === "Character doesn't exist") {

@@ -43,7 +43,6 @@ function saveCharacter(){
     let encData = new URLSearchParams(formData.entries());
     let fetchoptions = { method: 'PATCH', body: encData, headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
 
-
     fetch("restservices/characters/save/" + list, fetchoptions)
         .then(async response => {
             if (response.status === 200) {window.alert("The character has been added");

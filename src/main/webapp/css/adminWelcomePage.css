@@ -1,7 +1,6 @@
 body{
-    background-color: #e5f5dc;
+    background-color: #edf5f5;
     font-family: "Roboto Thin";
-
 }
 
 .navbar{
@@ -18,11 +17,11 @@ body{
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
-    background: #287d5d;
+    background: #6690d1;
     width : 100%;
     height: 50px;
 }
-
+/* #89ABE3FF , #4c80bb */
 label.logo{
     left: 0;
     color: white;
@@ -40,9 +39,8 @@ nav ul{
 
 nav ul li{
     display: inline-block;
-    line-height: 36px;
+    line-height: 30px;
     margin: 0 5px;
-
 }
 
 nav ul li a{
@@ -50,18 +48,19 @@ nav ul li a{
     padding: 7px 10px;
     border-radius: 3px;
     color: white;
-    font-size: 17px;
+    font-weight: bold;
+    font-size: 21px;
     text-transform: uppercase;
 }
 
-a.active,a:hover{
-    background: #BDECB6;
+.navbar a.active,a:hover{
+    background: #9ac1fc;
     color: 	black;
     transition: .5s;
 }
 
 main {
-    margin-top: 85px;
+    margin-top: 60px;
 }
 
 #logoutButton {
@@ -70,4 +69,36 @@ main {
     border: none;
     outline: none;
     overflow: hidden;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+#CREATE, #UPDATE, #DELETE, #CHANGE{
+    width: 350px;
+}
+
+main .labels {
+    display: inline-block;
+    width: 100px;
+}
+
+.smallerButton {
+    float: right;
+    border: 0;
+    margin-right: 6px;
+    text-transform: uppercase;
+    outline: 0;
+    background: #6690d1;
+    padding: 9px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.radio-button {
+    margin-right: 26px;
+    margin-left: 5px;
 }

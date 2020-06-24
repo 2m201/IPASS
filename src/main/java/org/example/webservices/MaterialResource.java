@@ -17,6 +17,7 @@ import java.util.Map;
 @Path("materials")
 public class MaterialResource {
 
+    @RolesAllowed({"user"})
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response getMaterials(@Context SecurityContext user){
@@ -30,7 +31,7 @@ public class MaterialResource {
         return Response.ok(list).build();
     }
 
-    @RolesAllowed("user")
+    @RolesAllowed({"user"})
     @PATCH
     @Produces(MediaType.APPLICATION_JSON)
     public Response addMaterials(@Context SecurityContext user, @FormParam("softwood") int softwood, @FormParam("ironnugget") int ironnugget, @FormParam("treebranch") int treebranch, @FormParam("wood") int wood, @FormParam("clay") int clay, @FormParam("hardwood") int hardwood, @FormParam("goldnugget") int goldnugget, @FormParam("stone") int stone, @FormParam("starfragment") int starfragment, @FormParam("clumpofweeds") int clumpofweeds){

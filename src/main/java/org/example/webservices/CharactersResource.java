@@ -1,5 +1,6 @@
 package org.example.webservices;
 
+import com.azure.core.annotation.Patch;
 import org.example.domein.Account;
 import org.example.domein.Character;
 import org.example.domein.Data;
@@ -16,6 +17,7 @@ import java.util.List;
 @Path("characters")
 public class CharactersResource {
 
+//    @RolesAllowed({"user"})
     @GET
     @Path("{searchCharacter}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -29,6 +31,7 @@ public class CharactersResource {
         return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character doesn't exist")).build();
     }
 
+    @RolesAllowed({"admin"})
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     public Response createCharacter(@FormParam("characterName") String name, @FormParam("characterURL") String URL, @FormParam("gender") String gender,
@@ -54,7 +57,7 @@ public class CharactersResource {
         return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", "Character already exists")).build();
     }
 
-    @RolesAllowed("admin")
+    @RolesAllowed({"admin"})
     @PATCH
     @Path("{charName}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -105,28 +108,26 @@ public class CharactersResource {
         }
     }
 
+    @RolesAllowed({"admin"})
     @DELETE
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteCharacter(@PathParam("name") String name) {
-        if (name.isEmpty()) {
-            return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Please fill in the field")).build();
+    public Response deleteCharacter(@PathParam("name") String name) throws Exception {
 
-        }
+        try {
 
-        System.out.println("Name " + name);
         boolean deleted = Character.deleteCharacter(name);
 
-        System.out.println("deleted " + deleted);
-
-        if (deleted){
             return Response.ok("Character has been deleted").build();
+
+    }catch(Exception e) {
+            return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
+
         }
-        return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character does not exist")).build();
 
     }
 
-    @RolesAllowed("user")
+    @RolesAllowed({"user"})
     @PATCH
     @Path("save/{list}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -161,6 +162,7 @@ public class CharactersResource {
 
     }
 
+    @RolesAllowed({"user"})
     @GET
     @Path("current")
     @Produces(MediaType.APPLICATION_JSON)
@@ -170,6 +172,7 @@ public class CharactersResource {
         return Response.ok(u1.getCurrentCharacters()).build();
     }
 
+    @RolesAllowed({"user"})
     @GET
     @Path("favourite")
     @Produces(MediaType.APPLICATION_JSON)
@@ -179,4 +182,27 @@ public class CharactersResource {
         return Response.ok(u1.getFavouriteCharacters()).build();
 
     }
+
+    @RolesAllowed({"user"})
+    @DELETE
+    @Path("transfer/{character}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response transferCharacter(@Context SecurityContext user, @PathParam("character") String name) throws Exception {
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
+        try {
+            Character character1 = Data.getData().getCharacterByName(name);
+            u1.addCharacter("current", character1);
+
+            u1.deleteCharacter("favourite", name);
+            System.out.println(character1);
+
+
+            return Response.ok(u1).build();
+
+        } catch (Exception e) {
+            return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
+        }
+    }
+
 }
+

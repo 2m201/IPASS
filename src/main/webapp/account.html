@@ -5,7 +5,6 @@
     <title>Your account</title>
     <link rel = "stylesheet" href = "css/account.css">
     <link rel="icon" href="https://vignette.wikia.nocookie.net/animalcrossing/images/1/14/NH-Icon-Nook_Phone-Nook_Miles.png/revision/latest/scale-to-width-down/340?cb=20200430161101">
-
 </head>
 
 <body onload= loadingChar()>
@@ -26,42 +25,11 @@
     <main>
         <section id="accountSection">
 
-            <div id="changePasswordDIV">
-                <form id="PATCHAccount">
-                    <h1>Change your password</h1>
-                    <fieldset>
-                        <legend hidden>Change password</legend>
-                        <br>
-                        <label for="oldPassword" class="firstLabel" >Old password: </label>
-                        <input type="password" id="oldPassword" name="oldPassword">
-
-                        <br>
-                        <br>
-
-                        <label for="newPassword" class="firstLabel" >New password: </label>
-                        <input type="password" id="newPassword" name="newPassword">
-
-                        <br>
-                        <br>
-
-                        <input type="button" id="changePasswordButton" value="Change" name="changePasswordButton" onclick="saveNewPassword()">
-                    </fieldset>
-                </form>
-            </div>
-
-            <div id="currentCharacters">
-                <h1>Current characters</h1>
-
-            </div>
-
-            <div id="favouriteCharacters">
-                <h1>Favourite characters</h1>
-
-            </div>
-
             <div id="materialSection">
-                <h1>Materials</h1>
-                <table class="materialTable" >
+                <h1 id="materialH">Materials</h1>
+                <input class="smallerButton" id="changeMaterialButton" type="button" value="Change" onclick="show('material')">
+
+                <table class="materialTable">
                     <thead>
                     <tr>
                         <th scope="col" colspan="2">Materials</th>
@@ -112,63 +80,128 @@
                     </tbody>
 
                 </table>
-                <input type="button" value="Change!" onclick="show()">
             </div>
+
+            <div id="changePasswordDIV">
+                <form id="PATCHAccount">
+                    <h1>Change your password</h1>
+                    <fieldset>
+                        <legend hidden>Change password</legend>
+                        <br>
+                        <label for="oldPassword" class="firstLabel" >Old password: </label>
+                        <input type="password" id="oldPassword" name="oldPassword">
+
+                        <br>
+                        <br>
+
+                        <label for="newPassword" class="firstLabel" >New password: </label>
+                        <input type="password" id="newPassword" name="newPassword">
+
+                        <br>
+                        <br>
+
+                        <input class="smallerButton" type="button" id="changePasswordButton" value="Save" name="changePasswordButton" onclick="saveNewPassword()">
+                    </fieldset>
+                </form>
+            </div>
+
+
+            <section class="characters">
+                <div id="currentCharacters" class="divCharacter">
+                    <h1>Current characters</h1>
+                </div>
+                <input type="button" id="currentListButton" value="Modify" onclick="show('current')">
+            </section>
+
+            <section id="characterSection">
+                <div id="favouriteCharacters" class="divCharacter">
+                    <h1>Favourite characters</h1>
+                </div>
+                <input type="button" id="favouriteListButton" value="Modify" onclick="show('favourite')" >
+            </section>
 
         </section>
 
-        <dialog id="changeMaterialDialog">
-            <form id ="PATCHmaterialForm">
-                <fieldset id="fieldset">
-                    <legend hidden>Fill in the amount!</legend>
-                    <h2 id="dialogH2">Fill in the amount</h2>
-                    <label for = "softwood1" class="firstLabel" >Softwood</label>
-                    <input type="number" id="softwood1" name="softwood">
+        <section class="dialog">
+            <dialog id="changeMaterialDialog">
+                <form id ="PATCHmaterialForm">
 
-                    <label for = "ironnugget" class="firstLabel">Iron nugget</label>
-                    <input type="number" id="ironnugget" name="ironnugget">
-                    <br> <br>
+                        <h2 id="dialogH2">Fill in the amount</h2>
+                        <label for = "softwood1" class="firstLabel" >Softwood</label>
+                        <input class="materialInput" type="number" id="softwood1" name="softwood">
 
-                    <label for = "treebranch" class="firstLabel">Tree branch</label>
-                    <input type="number" id="treebranch" name="treebranch">
+                        <label for = "ironnugget" class="firstLabel">Iron nugget</label>
+                        <input class="materialInput" type="number" id="ironnugget" name="ironnugget">
+                        <br> <br>
 
-                    <label for = "wood1" class="firstLabel">Wood</label>
-                    <input type="number" id="wood1" name="wood">
-                    <br> <br>
+                        <label for = "treebranch" class="firstLabel">Tree branch</label>
+                        <input class="materialInput" type="number" id="treebranch" name="treebranch">
 
-                    <label for = "clay1" class="firstLabel">Clay</label>
-                    <input type="number" id="clay1" name="clay" >
+                        <label for = "wood1" class="firstLabel">Wood</label>
+                        <input class="materialInput" type="number" id="wood1" name="wood">
+                        <br> <br>
 
-                    <label for = "hardwood" class="firstLabel">Hardwood</label>
-                    <input type="number" id="hardwood" name="hardwood" >
-                    <br> <br>
+                        <label for = "clay1" class="firstLabel">Clay</label>
+                        <input class="materialInput" type="number" id="clay1" name="clay" >
 
-                    <label for = "goldnugget" class="firstLabel">Gold nugget</label>
-                    <input type="number" id="goldnugget" name="goldnugget">
+                        <label for = "hardwood" class="firstLabel">Hardwood</label>
+                        <input class="materialInput" type="number" id="hardwood" name="hardwood" >
+                        <br> <br>
 
-                    <label for = "stone1" class="firstLabel">Stone</label>
-                    <input type="number" id="stone1" name="stone">
-                    <br> <br>
+                        <label for = "goldnugget" class="firstLabel">Gold nugget</label>
+                        <input class="materialInput" type="number" id="goldnugget" name="goldnugget">
 
-                    <label for = "starfragment" class="firstLabel">Star fragment</label>
-                    <input type="number" id="starfragment" name="starfragment">
+                        <label for = "stone1" class="firstLabel">Stone</label>
+                        <input class="materialInput" type="number" id="stone1" name="stone">
+                        <br> <br>
 
-                    <label for = "clumpofweeds" class="firstLabel">Clump of weeds</label>
-                    <input type="number" id="clumpofweeds" name="clumpofweeds">
+                        <label for = "starfragment" class="firstLabel">Star fragment</label>
+                        <input class="materialInput" type="number" id="starfragment" name="starfragment">
 
-                </fieldset>
+                        <label for = "clumpofweeds" class="firstLabel">Clump of weeds</label>
+                        <input class="materialInput" type="number" id="clumpofweeds" name="clumpofweeds">
 
-                <input class ="button" type="button" onclick="cancelSave()" id="cancel" value="Cancel"  style="float: right;">
-                <input class ="button" type="button" onclick="addMaterials()" id="confirmation" value="Save"  style="float: right;">
+                        <br>
+                        <br>
+                        <input class="smallerButton"  type="button" onclick="cancelDialog('material')" id="cancel" value="Cancel"  style="float: right;">
+                        <input class="smallerButton"  type="button" onclick="addMaterials()" id="confirmation" value="Save"  style="float: right;">
 
-            </form>
+                </form>
 
-        </dialog>
+            </dialog>
 
+            <dialog id="changeFavouriteDialog">
+                <p>You can either transfer a character to your current list or delete it from your favourite list.</p>
+                <br>
 
+                <label class="unwantedLabel" for="favouriteSelect">Choose</label><select id="favouriteSelect" required>
+                    <option disabled hidden selected>--Please choose a character--</option>
+                </select>
 
+                <br>
+                <br>
+                <section>
+                    <input class="smallerButton" type="button" id="transferFavouriteButton" value="Transfer" onclick="transferCharacter()">
+                    <input class="smallerButton" type="button" id="deleteFavouriteCharacter" value="Delete">
+                    <input class="smallerButton" type="button" id="cancelFavourite" value="Cancel" onclick="cancelDialog('favourite')">
+                </section>
+            </dialog> // TODO DELETE CHARACTER FROM LIST
 
+            <dialog id="changeCurrentDialog">
+                <h2>Delete a character</h2>
+               <br>
+                <label class="unwantedLabel" for="currentSelect">Choose</label><select id="currentSelect" required>
+                    <option disabled hidden selected>--Please choose a character--</option>
 
+                </select>
+                <br>
+                <br>
+                <section class="smallButton">
+                <input class="smallerButton" type="button" id="deleteCurrentCharacter" value="Delete">
+                <input class="smallerButton" type="button" id="cancelCurrent" value="Cancel" onclick="cancelDialog('current')">
+                </section>
+            </dialog> //TODO DELETE CHARACTER FROM LIST
+        </section>
 
     </main>
 

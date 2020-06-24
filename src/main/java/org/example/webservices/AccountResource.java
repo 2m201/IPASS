@@ -14,14 +14,13 @@ import java.util.AbstractMap;
 @Path("accounts")
 public class AccountResource {
 
-    @RolesAllowed("user")
+    @RolesAllowed({"admin", "user"})
     @PATCH
     @Path("/account")
     @Produces(MediaType.APPLICATION_JSON)
     public Response changePassword(@Context SecurityContext user, @FormParam("oldPassword") String oldP, @FormParam("newPassword") String newP)  {
         try {
             Account account = Data.getData().getAccountByName(user.getUserPrincipal().getName());
-            System.out.println("name " + account.getName());
 
             account.setPassword(oldP, newP);
 

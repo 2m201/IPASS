@@ -62,14 +62,14 @@ public class Character implements Serializable {
     public void setCatchphrase(String catchphrase) { this.catchphrase = catchphrase; }
     public void setDescription(String description) { this.description = description; }
 
-    public static boolean deleteCharacter(String name) {
+    public static boolean deleteCharacter(String name) throws Exception {
         for (Character item : Data.getData().getAllCharacters()) {
             if (item.getName().equals(name)) {
                 Data.getData().allCharacters.remove(item);
                 return true;
             }
         }
-        return false;
+        throw new Exception("Character does not exist");
     }
 
 }

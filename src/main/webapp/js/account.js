@@ -11,6 +11,11 @@ const CLUMPOFWEEDS = document.getElementById("clumpofweeds");
 
 
 const DIALOG = document.getElementById("changeMaterialDialog");
+const FAVOURITEDIALOG = document.getElementById("changeFavouriteDialog");
+const CURRENTDIALOG = document.getElementById("changeCurrentDialog");
+
+let selectFavourite = document.getElementById("favouriteSelect");
+let selectCurrent = document.getElementById("currentSelect");
 
 function logout(){
     window.sessionStorage.removeItem("myJWT");
@@ -30,11 +35,24 @@ function saveNewPassword(){
         .catch(error => console.log(error))
 
 }
-function show(){
-    DIALOG.show();
+function show(type){
+    if (type ==='material') {
+        DIALOG.show();
+    } else if (type ==='favourite') {
+        FAVOURITEDIALOG.show();
+    } else if (type ==='current') {
+        CURRENTDIALOG.show();
+    }
 }
-function cancelSave(){
-    DIALOG.close();
+function cancelDialog(type){
+    if (type ==='material') {
+        DIALOG.close();
+    } else if (type ==='favourite') {
+        FAVOURITEDIALOG.close();
+    } else if (type ==='current') {
+        CURRENTDIALOG.close();
+    }
+
 }
 function loadingChar(){
     getCurrentCharacters();
@@ -47,6 +65,7 @@ function passVariable(name){
 }
 
 function appendCharacters(data, list){
+
     let currentContainer = document.getElementById("currentCharacters");
     let favouriteContainer = document.getElementById("favouriteCharacters");
 
@@ -68,13 +87,39 @@ function appendCharacters(data, list){
 
         if (list ==="current") {
             currentContainer.appendChild(characterNav);
+
+            let length = selectCurrent.length;
+            for (i=length -1; i >= 1; i--) {
+                selectCurrent.options[i] = null;
+            }
+
+            for (let i =0; i < data.length; i++) {
+                let option = data[i].name;
+                let element = document.createElement("option");
+                element.textContent = option;
+                element.value = option;
+                selectCurrent.appendChild(element);
+            }
         } else if (list === "favourite") {
             favouriteContainer.appendChild(characterNav);
+
+            let length = selectFavourite.length;
+            for (i=length -1; i >= 1; i--) {
+                selectFavourite.options[i] = null;
+            }
+
+            for (let i =0; i < data.length; i++) {
+                let option = data[i].name;
+                let element = document.createElement("option");
+                element.textContent = option;
+                element.value = option;
+                selectFavourite.appendChild(element);
+            }
 
         }
 
     }
-}
+} //WORKS
 
 function appendFavourite(data){
     let favouriteContainer = document.getElementById("favouriteCharacters");
@@ -158,7 +203,6 @@ function getFavouriteCharacters(){
         .catch(error => console.log(error))
 }
 
-
 function addMaterials() { //works
 
     if (SOFTWOOD.value == "" && TREEBRANCH.value == "" && CLAY.value == "" && GOLDNUGGET.value == "" && STARFRAGMENT.value == "" && IRONNUGGET.value == "" && WOOD.value == "" && HARDWOOD.value == "" && STONE.value == "" && CLUMPOFWEEDS.value == "") {
@@ -204,3 +248,24 @@ function addMaterials() { //works
     }
 
 }
+
+function transferCharacter() {
+    let character = selectFavourite.value;
+    console.log(character);
+
+    let fetchoptions = { method: 'DELETE', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+    fetch("restservices/characters/transfer/" +character, fetchoptions)
+        .then(async response => {
+            if (response.status === 200) {
+                window.alert("The character has transferred");
+                console.log("it has been modified");
+                location.reload();
+            }
+            else { const JSON = await response.json();
+                window.alert(JSON.error);
+                console.log(JSON.error)}
+        })
+        .catch(error => console.log(error))
+
+} // WORKS
