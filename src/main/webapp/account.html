@@ -25,6 +25,20 @@
     <main>
         <section id="accountSection">
 
+            <section class="characters">
+                <div id="currentCharacters" class="divCharacter">
+                    <h1>Current characters</h1>
+                </div>
+                <input type="button" id="currentListButton" value="Modify" onclick="show('current')">
+            </section>
+
+            <section id="characterSection">
+                <div id="favouriteCharacters" class="divCharacter">
+                    <h1>Favourite characters</h1>
+                </div>
+                <input type="button" id="favouriteListButton" value="Modify" onclick="show('favourite')" >
+            </section>
+
             <div id="materialSection">
                 <h1 id="materialH">Materials</h1>
                 <input class="smallerButton" id="changeMaterialButton" type="button" value="Change" onclick="show('material')">
@@ -105,21 +119,6 @@
                 </form>
             </div>
 
-
-            <section class="characters">
-                <div id="currentCharacters" class="divCharacter">
-                    <h1>Current characters</h1>
-                </div>
-                <input type="button" id="currentListButton" value="Modify" onclick="show('current')">
-            </section>
-
-            <section id="characterSection">
-                <div id="favouriteCharacters" class="divCharacter">
-                    <h1>Favourite characters</h1>
-                </div>
-                <input type="button" id="favouriteListButton" value="Modify" onclick="show('favourite')" >
-            </section>
-
         </section>
 
         <section class="dialog">
@@ -182,7 +181,7 @@
                 <br>
                 <section>
                     <input class="smallerButton" type="button" id="transferFavouriteButton" value="Transfer" onclick="transferCharacter()">
-                    <input class="smallerButton" type="button" id="deleteFavouriteCharacter" value="Delete">
+                    <input class="smallerButton" type="button" id="deleteFavouriteCharacter" value="Delete" onclick="removeCharacterFromList('favourite')">
                     <input class="smallerButton" type="button" id="cancelFavourite" value="Cancel" onclick="cancelDialog('favourite')">
                 </section>
             </dialog> // TODO DELETE CHARACTER FROM LIST
@@ -197,7 +196,7 @@
                 <br>
                 <br>
                 <section class="smallButton">
-                <input class="smallerButton" type="button" id="deleteCurrentCharacter" value="Delete">
+                <input class="smallerButton" type="button" id="deleteCurrentCharacter" value="Delete" onclick="removeCharacterFromList('current')">
                 <input class="smallerButton" type="button" id="cancelCurrent" value="Cancel" onclick="cancelDialog('current')">
                 </section>
             </dialog> //TODO DELETE CHARACTER FROM LIST

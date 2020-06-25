@@ -51,6 +51,17 @@ public class Data implements Serializable {
         allAccounts.clear();
     }
 
+    public void removeCharacterFromList(String name) {
+
+        for (Account item : allAccounts) {
+            item.getFavouriteCharacters().removeIf(chara -> chara.getName().equals(name));
+            item.getCurrentCharacters().removeIf(chara -> chara.getName().equals(name));
+
+        }
+
+
+    }
+
 
 }
 

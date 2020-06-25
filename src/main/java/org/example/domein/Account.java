@@ -108,7 +108,6 @@ public class Account implements Principal, Serializable {
 
     public boolean deleteCharacter(String list, String name) {
 
-
         if (list.equals("favourite")) {
             for (Character item : favouriteCharacter) {
                 if (item.getName().equals(name)) {

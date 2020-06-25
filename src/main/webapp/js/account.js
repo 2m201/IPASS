@@ -9,7 +9,6 @@ const STONE = document.getElementById("stone1");
 const STARFRAGMENT = document.getElementById("starfragment");
 const CLUMPOFWEEDS = document.getElementById("clumpofweeds");
 
-
 const DIALOG = document.getElementById("changeMaterialDialog");
 const FAVOURITEDIALOG = document.getElementById("changeFavouriteDialog");
 const CURRENTDIALOG = document.getElementById("changeCurrentDialog");
@@ -269,3 +268,33 @@ function transferCharacter() {
         .catch(error => console.log(error))
 
 } // WORKS
+
+function removeCharacterFromList(listtype) {
+    let character = null;
+    let type = null;
+
+    if (listtype ==='favourite') {
+       character = selectFavourite.value;
+       type = 'favourite';
+    } else if (listtype ==='current') {
+        character = selectCurrent.value;
+        type= 'current';
+    }
+
+    let fetchoptions = { method: 'DELETE', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+
+    fetch("restservices/characters/" +type + "/" +character, fetchoptions)
+        .then(async response => {
+            if (response.status === 200) {
+                window.alert("The character has removed from the list");
+                console.log("it has been modified");
+                location.reload();
+            }
+            else { const JSON = await response.json();
+                window.alert(JSON.error);
+                console.log(JSON.error)}
+        })
+        .catch(error => console.log(error))
+
+
+}

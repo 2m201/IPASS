@@ -66,6 +66,7 @@ public class Character implements Serializable {
         for (Character item : Data.getData().getAllCharacters()) {
             if (item.getName().equals(name)) {
                 Data.getData().allCharacters.remove(item);
+                Data.getData().removeCharacterFromList(name);
                 return true;
             }
         }

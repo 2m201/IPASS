@@ -204,5 +204,20 @@ public class CharactersResource {
         }
     }
 
+    @RolesAllowed({"user"})
+    @DELETE
+    @Path("{type}/{character}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response removeCharacter(@Context SecurityContext user, @PathParam("type") String list, @PathParam("character") String name) {
+        Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
+
+        try {
+            u1.deleteCharacter(list, name);
+            return Response.ok(u1).build();
+        }catch (Exception e ) {
+            return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
+        }
+    }
+
 }
 
