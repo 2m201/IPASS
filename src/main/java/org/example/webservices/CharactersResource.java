@@ -162,12 +162,13 @@ public class CharactersResource {
 
     }
 
-    @RolesAllowed({"user"})
+//    @RolesAllowed({"user"})
     @GET
     @Path("current")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCurrentCharacter(@Context SecurityContext user) {
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
+
 
         return Response.ok(u1.getCurrentCharacters()).build();
     }

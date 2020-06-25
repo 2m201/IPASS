@@ -145,9 +145,9 @@ public class MyServletContextListener implements ServletContextListener {
             Character rudy = new Character("Rudy", "Male", "Jock", "Cat", "December 20th", "Oooh, imagine that, a flea sucking the carbs right out of me!", "Rudy (チャス, Chasu) is a jock cat villager that first appeared in New Leaf. His English name may refer to Rudolph the Red-Nosed Reindeer, who has a red nose like Rudy. His initial phrase and his birthday support this possibility. His New Leaf picture quote is a reference to how cats land on their feet. \n " + "\n" + "He has the play hobby.");
             rudy.setPicture("https://vignette.wikia.nocookie.net/animalcrossing/images/3/35/Rudy_HD.png/revision/latest/scale-to-width-down/350?cb=20180917123841");
 
-            //            Data.getData().clearCharacterList();
+//                        Data.getData().clearCharacterList();
 
-//            Data.getData().clearAccountList();
+            Data.getData().clearAccountList();
 
             Account mokko = new Account("mokko", "melanie123");
             Account test1 = new Account("test", "testing1");

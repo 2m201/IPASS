@@ -37,21 +37,32 @@ function getCharacter() {
 function saveCharacter(){
     const SELECT = document.getElementById('characterList');
     let list =  SELECT.value;
-    console.log("list: " + list);
 
-    let formData = new FormData(document.querySelector('#charFORM'));
-    let encData = new URLSearchParams(formData.entries());
-    let fetchoptions = { method: 'PATCH', body: encData, headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+    if (list === "off") {
+        window.alert("PLease select a list to add the character to.")
+    } else {
 
-    fetch("restservices/characters/save/" + list, fetchoptions)
-        .then(async response => {
-            if (response.status === 200) {window.alert("The character has been added");
-                console.log("it has been modified")}
-            else { const JSON = await response.json();
-                window.alert(JSON.error);
-                console.log(JSON.error)}
-        })
-        .catch(error => console.log(error))
+        let formData = new FormData(document.querySelector('#charFORM'));
+        let encData = new URLSearchParams(formData.entries());
+        let fetchoptions = {
+            method: 'PATCH',
+            body: encData,
+            headers: {'Authorization': 'Bearer ' + window.sessionStorage.getItem("myJWT")}
+        };
+
+        fetch("restservices/characters/save/" + list, fetchoptions)
+            .then(async response => {
+                if (response.status === 200) {
+                    window.alert("The character has been added");
+                    console.log("it has been modified")
+                } else {
+                    const JSON = await response.json();
+                    window.alert(JSON.error);
+                    console.log(JSON.error)
+                }
+            })
+            .catch(error => console.log(error))
+    }
 }
 
 function logout(){

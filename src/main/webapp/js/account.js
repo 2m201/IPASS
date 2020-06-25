@@ -235,7 +235,6 @@ function addMaterials() { //works
                     DIALOG.close();
                     location.reload();
                     return response;
-
                 }
             })
             .then(response => response.json())
@@ -252,26 +251,35 @@ function transferCharacter() {
     let character = selectFavourite.value;
     console.log(character);
 
-    let fetchoptions = { method: 'DELETE', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+    if (character === "off" ) {
+        window.alert("Please choose a character");
+    } else {
 
-    fetch("restservices/characters/transfer/" +character, fetchoptions)
-        .then(async response => {
-            if (response.status === 200) {
-                window.alert("The character has transferred");
-                console.log("it has been modified");
-                location.reload();
-            }
-            else { const JSON = await response.json();
-                window.alert(JSON.error);
-                console.log(JSON.error)}
-        })
-        .catch(error => console.log(error))
+        let fetchoptions = {
+            method: 'DELETE',
+            headers: {'Authorization': 'Bearer ' + window.sessionStorage.getItem("myJWT")}
+        };
+
+        fetch("restservices/characters/transfer/" + character, fetchoptions)
+            .then(async response => {
+                if (response.status === 200) {
+                    window.alert("The character has transferred");
+                    console.log("it has been modified");
+                    location.reload();
+                } else {
+                    const JSON = await response.json();
+                    window.alert(JSON.error);
+                    console.log(JSON.error)
+                }
+            })
+            .catch(error => console.log(error))
+    }
 
 } // WORKS
 
 function removeCharacterFromList(listtype) {
-    let character = null;
-    let type = null;
+    let character;
+    let type;
 
     if (listtype ==='favourite') {
        character = selectFavourite.value;
@@ -281,20 +289,27 @@ function removeCharacterFromList(listtype) {
         type= 'current';
     }
 
-    let fetchoptions = { method: 'DELETE', headers : {'Authorization' : 'Bearer ' + window.sessionStorage.getItem("myJWT")}};
+    if (character === "off") {
+        window.alert("Please choose a character");
+    } else {
 
-    fetch("restservices/characters/" +type + "/" +character, fetchoptions)
-        .then(async response => {
-            if (response.status === 200) {
-                window.alert("The character has removed from the list");
-                console.log("it has been modified");
-                location.reload();
-            }
-            else { const JSON = await response.json();
-                window.alert(JSON.error);
-                console.log(JSON.error)}
-        })
-        .catch(error => console.log(error))
+        let fetchoptions = {
+            method: 'DELETE',
+            headers: {'Authorization': 'Bearer ' + window.sessionStorage.getItem("myJWT")}
+        };
 
-
+        fetch("restservices/characters/" + type + "/" + character, fetchoptions)
+            .then(async response => {
+                if (response.status === 200) {
+                    window.alert("The character has removed from the list");
+                    console.log("it has been modified");
+                    location.reload();
+                } else {
+                    const JSON = await response.json();
+                    window.alert(JSON.error);
+                    console.log(JSON.error)
+                }
+            })
+            .catch(error => console.log(error))
+    }
 }

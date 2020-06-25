@@ -122,6 +122,7 @@
         </section>
 
         <section class="dialog">
+
             <dialog id="changeMaterialDialog">
                 <form id ="PATCHmaterialForm">
 
@@ -174,7 +175,7 @@
                 <br>
 
                 <label class="unwantedLabel" for="favouriteSelect">Choose</label><select id="favouriteSelect" required>
-                    <option disabled hidden selected>--Please choose a character--</option>
+                    <option value="off" disabled hidden selected>--Please choose a character--</option>
                 </select>
 
                 <br>
@@ -184,13 +185,13 @@
                     <input class="smallerButton" type="button" id="deleteFavouriteCharacter" value="Delete" onclick="removeCharacterFromList('favourite')">
                     <input class="smallerButton" type="button" id="cancelFavourite" value="Cancel" onclick="cancelDialog('favourite')">
                 </section>
-            </dialog> // TODO DELETE CHARACTER FROM LIST
+            </dialog>
 
             <dialog id="changeCurrentDialog">
                 <h2>Delete a character</h2>
                <br>
                 <label class="unwantedLabel" for="currentSelect">Choose</label><select id="currentSelect" required>
-                    <option disabled hidden selected>--Please choose a character--</option>
+                    <option  value="off" disabled hidden selected>--Please choose a character--</option>
 
                 </select>
                 <br>
@@ -199,7 +200,7 @@
                 <input class="smallerButton" type="button" id="deleteCurrentCharacter" value="Delete" onclick="removeCharacterFromList('current')">
                 <input class="smallerButton" type="button" id="cancelCurrent" value="Cancel" onclick="cancelDialog('current')">
                 </section>
-            </dialog> //TODO DELETE CHARACTER FROM LIST
+            </dialog>
         </section>
 
     </main>
