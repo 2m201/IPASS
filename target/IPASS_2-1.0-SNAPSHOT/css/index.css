@@ -1,0 +1,83 @@
+/*bg1 = #e5f5dc*/
+
+body{
+    background-color:#edf5f5;
+    font-family: "Roboto Thin";
+}
+
+.navbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.navigation{
+    position: fixed;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    background:#6690d1;
+    width : 100%;
+    height: 50px;
+}
+
+label.logo{
+    left: 0;
+    color: white;
+    font-size: 25px;
+    line-height: 60px;
+    padding : 0 40px;
+    font-weight: bold;
+}
+
+label{
+    display: inline-block;
+    width : 200px;
+    text-align: right;
+}
+
+main {margin-top: 60px;}
+
+.block {
+    text-align: center;
+    padding: 70px 0;
+}
+
+#login {
+    position: relative;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+#loginbutton{
+    text-transform: uppercase;
+    outline: 0;
+    background: #6690d1;
+    width: 100%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.label {
+    display: none;
+}
+
+#login .input {
+    outline: 0;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+}

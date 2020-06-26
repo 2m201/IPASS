@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>shite</title>
+    <link rel = "stylesheet" href = "css/adminWelcomePage.css">
+    <link rel="icon" href="https://vignette.wikia.nocookie.net/animalcrossing/images/1/14/NH-Icon-Nook_Phone-Nook_Miles.png/revision/latest/scale-to-width-down/340?cb=20200430161101">
+</head>
+
+<header>
+    <div class="navbar">
+        <nav class="navigation" id="navigation">
+            <label class="logo" for="navigation">ACRemember</label>
+            <ul>
+<!--                <li><a href ="create.html">Create</a></li>-->
+<!--                <li><a href ="update.html">Update</a></li>-->
+<!--                <li><a href = "delete.html">Delete</a></li>-->
+                <li><a href="index.html" onclick="logout()">Log out</a></li>
+
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<body>
+    <main>
+        <section>
+            <div id="CHANGE">
+                <form id="PATCHAccount">
+                    <h1>Change your password</h1>
+                    <fieldset>
+                        <legend hidden>Change password</legend>
+                        <br>
+                        <label class="labels" for="oldPassword" class="firstLabel" >Old password: </label>
+                        <input type="password" id="oldPassword" name="oldPassword">
+
+                        <br>
+                        <br>
+
+                        <label class="labels" for="newPassword" class="firstLabel" >New password: </label>
+                        <input type="password" id="newPassword" name="newPassword">
+
+                        <br>
+                        <br>
+
+                        <input class="smallerButton" type="button" id="changePasswordButton" value="Save" name="changePasswordButton" onclick="saveNewPassword()">
+                    </fieldset>
+                </form>
+            </div>
+
+            <div id="CREATE">
+            <form id="POSTCharacter">
+                <h1>Create a new character</h1>
+                <fieldset>
+                    <legend hidden>Character</legend>
+
+                    <!--                <input type="button" id="createCharacter" value="Create a character" onclick="showCharacter()">-->
+
+                    <label class="labels" for="characterName" class="labels">Name: </label>
+                    <input type="text" id="characterNameC" name="characterName">
+                    <br>
+                    <br>
+
+                    <label class="labels" for="characterURL" class="labels">Picture URL: </label>
+                    <input type="text" id="characterURLC" name="characterURL">
+                    <br>
+                    <br>
+
+                    <label for="female">Female: </label>
+                    <input class="radio-button" type="radio" name="gender" id="femaleC" value="female">
+                    <label for="male">Male: </label>
+                    <input class="radio-button" type="radio" name="gender" id="maleC" value="male">
+                    <br>
+                    <br>
+
+                    <label class="labels" for="characterPersonality" class="labels">Personality: </label>
+                    <input type="text" id="characterPersonalityC" name="characterPersonality">
+                    <br>
+                    <br>
+
+
+                    <label class="labels" for="characterSpecies" class="labels">Species: </label>
+                    <input type="text" id="characterSpeciesC" name="characterSpecies">
+                    <br>
+                    <br>
+
+                    <label class="labels" for="characterBirthday" class="labels">Birthday: </label>
+                    <input type="text" id="characterBirthdayC" name="characterBirthday">
+                    <br>
+                    <br>
+
+                    <label class="labels" for="characterCatchphrase" class="labels">Catchphrase: </label>
+                    <input type="text" id="characterCatchphraseC" name="characterCatchphrase">
+                    <br>
+                    <br>
+
+                    <label class="labels" for="characterDescription" class="labels">Description: </label>
+                    <input type="text" id="characterDescriptionC" name="characterDescription">
+                    <br>
+                    <br>
+                    <input class="smallerButton" type="button" value="Submit" id="createChar" onclick="createCharacter()"> <!-- ONCLICK TO OD-->
+                </fieldset>
+
+
+            </form>
+        </div>
+
+            <div id="UPDATE">
+                <form id="PATCHCharacter">
+                    <h1>Modify a character</h1>
+                    <fieldset>
+                        <legend hidden>Character</legend>
+                        <h3>Which character do you want to modify?</h3>
+                        <br>
+                        <label class="labels" for="characterChange" class="labels">Name: </label>
+                        <input type="text" id="characterChange" name="characterChange" required>
+                        <br>
+                        <br>
+                        <hr>
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterName" class="labels">Name: </label>
+                        <input type="text" id="characterName" name="characterName">
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterURL" class="labels">Picture URL: </label>
+                        <input type="text" id="characterURL" name="characterURL">
+                        <br>
+                        <br>
+
+                        <label for="Female">Female: </label>
+                        <input class="radio-button" type="radio" name="gender" id="Female" value="Female">
+                        <label for="Male">Male: </label>
+                        <input class="radio-button" type="radio" name="gender" id="Male" value="Male">
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterPersonality" class="labels">Personality: </label>
+                        <input type="text" id="characterPersonality" name="characterPersonality">
+                        <br>
+                        <br>
+
+
+                        <label class="labels" for="characterSpecies" class="labels">Species: </label>
+                        <input type="text" id="characterSpecies" name="characterSpecies">
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterBirthday" class="labels">Birthday: </label>
+                        <input type="text" id="characterBirthday" name="characterBirthday">
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterCatchphrase" class="labels">Catchphrase: </label>
+                        <input type="text" id="characterCatchphrase" name="characterCatchphrase">
+                        <br>
+                        <br>
+
+                        <label class="labels" for="characterDescription" class="labels">Description: </label>
+                        <input type="text" id="characterDescription" name="characterDescription">
+                        <br>
+                        <br>
+                        <input class="smallerButton" type="button" value="Submit" id="updateChar" onclick="changeCharacter()"> <!-- ONCLICK TO OD-->
+                    </fieldset>
+
+
+                </form>
+            </div>
+
+            <div id="DELETE">
+                <h1>Delete a character</h1>
+                <form>
+                    <fieldset>
+                        <legend hidden>Character</legend>
+                        <br>
+                        <label class="labels" for="characterName">Name: </label>
+                        <input type="text" id="characterNameD" name="characterName">
+                        <br>
+                        <br>
+                        <input class="smallerButton" type="button" value="Delete" id="characterDelete" onclick="deleteCharacter()">
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+<script type="application/javascript" src="js/adminWelcomePage.js"></script>
+
+</html>

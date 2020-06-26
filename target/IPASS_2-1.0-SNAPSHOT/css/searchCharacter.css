@@ -1,0 +1,106 @@
+body{
+    background-color: #edf5f5;
+    font-family: "Roboto Thin";
+}
+
+.navbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.navigation{
+    position: fixed;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    background: #6690d1;
+    width : 100%;
+    height: 50px;
+}
+/* #89ABE3FF , #4c80bb */
+label.logo{
+    left: 0;
+    color: white;
+    font-size: 25px;
+    line-height: 60px;
+    padding : 0 40px;
+    font-weight: bold;
+}
+
+nav ul{
+    float : right;
+    margin-right: 20px;
+
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 30px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 21px;
+    text-transform: uppercase;
+}
+
+.navbar a.active,a:hover{
+    background: #9ac1fc;
+    color: 	black;
+    transition: .5s;
+}
+
+#myData {
+    display: inline-block;
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+#myData nav li  {
+    text-align: center;
+    list-style: none;
+    border-radius: 25px;
+    text-decoration: none;
+    color: black;
+    width: 250px;
+    margin: 10px;
+    background-color: #bac4d9;
+}
+#myData nav li a {
+    text-decoration: none;
+}
+
+#myData a:hover {
+    background: #edf5f5;
+}
+
+header{
+    margin-top: 60px;
+}
+main{
+    margin-top: 60px;
+}
+
+#searchButton {
+    border: 0;
+    margin-right: 6px;
+    text-transform: uppercase;
+    outline: 0;
+    background: #6690d1;
+    padding: 9px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/*e5f5dc*/

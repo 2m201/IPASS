@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title id="title"></title>
+    <link rel = "stylesheet" href = "css/character.css">
+    <script type="application/javascript" src="js/character.js"></script>
+    <link rel="icon" href="https://vignette.wikia.nocookie.net/animalcrossing/images/1/14/NH-Icon-Nook_Phone-Nook_Miles.png/revision/latest/scale-to-width-down/340?cb=20200430161101">
+</head>
+
+<body onload = getCharacter()>
+
+<header>
+    <div class="navbar">
+        <nav class="navigation" id="navigation">
+            <label class="logo" for="navigation">ACRemember</label>
+            <ul>
+                <li><a href = "searchCharacter.html">Search</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="index.html" onclick="logout()">Log out</a></li>
+
+            </ul>
+        </nav>
+    </div> <!-- navigation bar-->
+</header>
+
+    <main>
+
+        <section id="table">
+            <table class="characterTable" >
+                <thead id="tableHead">
+                <tr>
+                    <th scope ="col" colspan="2" id="name"></th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td colspan ="2" > <img id="picture" src="" width="275" height="375" alt="Picture of the character"></td>
+
+                </tr>
+
+                <tr>
+                    <th>Gender</th>
+                    <td id ="gender"></td> <!-- value of gender-->
+                </tr>
+                <tr>
+                    <th>Personality</th>
+                    <td id="personality"></td> <!-- value of personality-->
+                </tr>
+                <tr>
+                    <th>Species</th>
+                    <td id="species"></td> <!-- value of species-->
+                </tr>
+                <tr>
+                    <th>Birthday</th>
+                    <td id="birthday"></td> <!-- value of birthday-->
+                </tr>
+                </tbody>
+
+            </table>
+
+        </section>
+
+        <section class="information">
+            <h1 id="header"></h1>
+            <p id="subheader"></p>
+            <p id="description"></p>
+
+            <br>
+            <section>
+                <label for="characterList">Add to a list: </label>
+                <select id="characterList" required>
+                    <option value="off" disabled hidden selected>--Please choose an option--</option>
+                    <option value="current">Current</option>
+                    <option value="favourite">Favourite</option>
+                </select>
+                <input type="button" id="saveButton" value="Save!" onclick="saveCharacter()">
+            </section>
+
+            <br>
+
+            <input  type="button" value="Go back!" onclick=previousPage()>
+        </section>
+
+
+
+
+        <form id="charFORM" hidden>
+            <input  name="characterName" id="characterName">
+        </form>
+
+
+    </main>
+
+</body>
+</html>

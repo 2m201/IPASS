@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="stylesheet" href = "css/searchCharacter.css">
+    <script type="application/javascript" src="js/searchCharacter.js"></script>
+    <link rel="icon" href="https://vignette.wikia.nocookie.net/animalcrossing/images/1/14/NH-Icon-Nook_Phone-Nook_Miles.png/revision/latest/scale-to-width-down/340?cb=20200430161101">
+
+</head>
+
+<header>
+    <div class="navbar">
+        <nav class="navigation" id="navigation">
+            <label class="logo" for="navigation">ACRemember</label>
+            <ul>
+                <li><a href = "searchCharacter.html">Search</a></li>
+                <li><a href="account.html">Account</a></li>
+                <li><a href="index.html" onclick="logout()">Log out</a></li>
+
+            </ul>
+        </nav>
+    </div> <!-- navigation bar-->
+</header>
+
+    <body>
+
+        <header>
+            <h1>Need to find a character?</h1>
+            <p class="text">Finding a character can be quite difficult, as there are over 400 characters in Animal Crossing! Use this search engine to find your new best friend! Search for their name, species or personality.</p>
+            <p class="text">Please remember, this website is still in development! Not all characters are available to be searched at the moment.</p>
+        </header>
+
+        <main>
+            <form id="GETcharacterform">
+                <label for ="searchCharacter" class="text">Please search for characters below:</label>
+                <br>
+                <br>
+                <input type="text" id="searchCharacter" name="searchCharacter">
+
+                <input type = "button" id ="searchButton" value="Search!" onclick="search()">
+            </form>
+
+            <div id="myData"></div>
+            <p  id="error"></p>
+
+        </main>
+
+    </body>
+
+</html>

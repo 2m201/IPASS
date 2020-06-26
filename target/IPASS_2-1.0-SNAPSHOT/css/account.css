@@ -1,0 +1,214 @@
+body{
+    background-color: #edf5f5;
+    font-family: "Roboto Thin";
+}
+
+.navbar{
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+
+.navigation{
+    position: fixed;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    background: #6690d1;
+    width : 100%;
+    height: 50px;
+}
+/* #89ABE3FF , #4c80bb */
+label.logo{
+    left: 0;
+    color: white;
+    font-size: 25px;
+    line-height: 60px;
+    padding : 0 40px;
+    font-weight: bold;
+}
+
+nav ul{
+    float : right;
+    margin-right: 20px;
+
+}
+
+nav ul li{
+    display: inline-block;
+    line-height: 30px;
+    margin: 0 5px;
+}
+
+nav ul li a{
+    text-decoration: none;
+    padding: 7px 10px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    font-size: 21px;
+    text-transform: uppercase;
+}
+
+.navbar a.active,a:hover{
+    background: #9ac1fc;
+    color: 	black;
+    transition: .5s;
+}
+
+main {margin-top: 60px;}
+
+#currentCharacters, #favouriteCharacters{
+    font-size: 1.4em;
+    text-decoration: none;
+}
+
+#currentCharacters a:hover,#favouriteCharacters a:hover {
+    background: #edf5f5;
+}
+.divCharacter nav {
+    text-align: center;
+}
+.divCharacter nav li  {
+    display: inline-block;
+    list-style: none;
+    border-radius: 25px;
+    text-decoration: none;
+    color: black;
+    width: 250px;
+    margin: 10px;
+    background-color: #bac4d9;
+}
+#favouriteCharacters nav li a , #currentCharacters nav li a{
+    text-decoration: none;
+
+}
+#accountSection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.firstLabel {
+    display: inline-block;
+    width: 150px;
+}
+
+.materialInput {
+    right: 20px;
+}
+
+#confirmation {
+    right: 200px;
+}
+
+.materialTable {
+    text-align: center;
+    border-collapse: collapse;
+    font-size: 17px;
+    min-width: 200px;
+    margin: 0 auto;
+}
+.materialTable thead tr {
+    background-color: #bac4d9;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+section div {
+    display: inline-block;
+}
+
+dialog {
+    text-align: center;
+    top: 150px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+#favouriteListButton, #currentListButton {
+    margin:0 auto;
+    display:block;
+
+    text-transform: uppercase;
+    outline: 0;
+    background: #6690d1;
+    width: 25%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.smallerButton {
+    border: 0;
+    margin-right: 6px;
+    text-transform: uppercase;
+    outline: 0;
+    background: #6690d1;
+    padding: 9px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+
+}
+
+select {
+    display: block;
+    margin: 0 auto;
+}
+
+.unwantedLabel {
+    display: none;
+}
+
+.smallButton{
+    display: inline-block;
+}
+
+#changePasswordDIV {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#changePasswordButton {
+    float: right;
+}
+
+#materialSection {
+    width: 100%;
+    height: 100%;
+}
+
+#changeMaterialButton {
+    margin-bottom: -33px;
+    margin-left: 500px;
+    display:block;
+
+    /*float: right;*/
+    /*margin-left: 100px;*/
+    /*margin-top: 100px;*/
+    /*right: 40px;*/
+    /*top: 300px;*/
+    /*right: 100px;*/
+    /*top: 300px;*/
+}
+
+@media screen and (min-width: 1580px) {
+    #changeMaterialButton {
+        margin-left: 600px;
+    }
+}
+
+/*fieldset {*/
+/*    display: inline-block;*/
+/*    text-align: center;*/
+/*    width: 200px;*/
+/*}*/
