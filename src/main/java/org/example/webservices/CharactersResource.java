@@ -1,6 +1,5 @@
 package org.example.webservices;
 
-import com.azure.core.annotation.Patch;
 import org.example.domein.Account;
 import org.example.domein.Character;
 import org.example.domein.Data;
@@ -113,11 +112,11 @@ public class CharactersResource {
     @DELETE
     @Path("{name}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response deleteCharacter(@PathParam("name") String name) throws Exception {
+    public Response deleteCharacter(@PathParam("name") String name) {
 
         try {
 
-        boolean deleted = Character.deleteCharacter(name);
+        Character.deleteCharacter(name);
 
             return Response.ok("Character has been deleted").build();
 
@@ -189,7 +188,7 @@ public class CharactersResource {
     @DELETE
     @Path("transfer/{character}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response transferCharacter(@Context SecurityContext user, @PathParam("character") String name) throws Exception {
+    public Response transferCharacter(@Context SecurityContext user, @PathParam("character") String name) {
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
         try {
             Character character1 = Data.getData().getCharacterByName(name);
