@@ -22,8 +22,9 @@ public class CharactersResource {
     @Path("{searchCharacter}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getCharacterByName(@PathParam("searchCharacter") String character){
+        String characteristic = character.substring(0,1).toUpperCase() + character.substring(1);
 
-        List<Character> c1 = Character.searchCharacter(character);
+        List<Character> c1 = Character.searchCharacter(characteristic);
 
         if(!(c1.isEmpty())){
                 return Response.ok(c1).build();
