@@ -39,18 +39,18 @@ class AccountTest {
         assertEquals("admin", a4.getRole());
     }
 
-//    @Test
-//    void addMaterialsToList(){
-//        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee");
-//        Material m1 = new Material("Softwood");
-//        Material m2 = new Material ("Stone");
-//
-//        HashMap<Material, Integer> list = new HashMap<>();
-//        list.put(m1, 3);
-//        list.put(m2,7);
-//        a5.addSavedMaterials(list);
-//        assertEquals(2, a5.getSavedMaterials().size());
-//    }
+    @Test
+    void addMaterialsToList(){
+        Account a5 = new Account("meelaaanniiieee", "eeeeeeeeee");
+        Material m1 = new Material("Softwood");
+        Material m2 = new Material ("Stone");
+
+        HashMap<Material, Integer> list = new HashMap<>();
+        list.put(m1, 3);
+        list.put(m2,7);
+        a5.addSavedMaterials(list);
+        assertEquals(2, a5.getSavedMaterials().size());
+    }
 
     @Test
     void addCharacterTwice(){

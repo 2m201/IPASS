@@ -9,7 +9,6 @@ public class Data implements Serializable {
     protected ArrayList<Character> allCharacters = new ArrayList<>();
     protected ArrayList<Account> allAccounts = new ArrayList<>();
     protected ArrayList<Material> allMaterials = new ArrayList<>();
-    protected ArrayList<Item> allItems = new ArrayList<>();
 
     private static Data dataObject = new Data();
 
