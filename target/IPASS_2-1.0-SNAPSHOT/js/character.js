@@ -1,3 +1,5 @@
+const NAME = localStorage['name'];
+
 
 function appendData(data){
     let item;
@@ -16,8 +18,6 @@ function appendData(data){
         document.getElementById("title").textContent = item.name;
     }
 }
-
-const NAME = localStorage['name'];
 
 function getCharacter() {
 
@@ -39,9 +39,8 @@ function saveCharacter(){
     let list =  SELECT.value;
 
     if (list === "off") {
-        window.alert("PLease select a list to add the character to.")
+        window.alert("Please select a list to add the character to.")
     } else {
-
         let formData = new FormData(document.querySelector('#charFORM'));
         let encData = new URLSearchParams(formData.entries());
         let fetchoptions = {
@@ -53,8 +52,7 @@ function saveCharacter(){
         fetch("restservices/characters/save/" + list, fetchoptions)
             .then(async response => {
                 if (response.status === 200) {
-                    window.alert("The character has been added");
-                    console.log("it has been modified")
+                    window.alert("The character has been added to the desired list.");
                 } else {
                     const JSON = await response.json();
                     window.alert(JSON.error);

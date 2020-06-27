@@ -36,8 +36,6 @@ public class MaterialResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response addMaterials(@Context SecurityContext user, @FormParam("softwood") int softwood, @FormParam("ironnugget") int ironnugget, @FormParam("treebranch") int treebranch, @FormParam("wood") int wood, @FormParam("clay") int clay, @FormParam("hardwood") int hardwood, @FormParam("goldnugget") int goldnugget, @FormParam("stone") int stone, @FormParam("starfragment") int starfragment, @FormParam("clumpofweeds") int clumpofweeds){
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
-        System.out.println("Softwood: " + softwood);
-        //TODO check if every input is empty
         try {
             HashMap<Material, Integer> materials = new HashMap<>();
 

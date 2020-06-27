@@ -163,7 +163,6 @@ function getMaterials(){
     fetch("restservices/materials",fetchoptions)
         .then(response => response.json())
         .then(function(data) {
-            console.log("Get data: " + data);
             appendMaterials(data)
         })
         .catch(error => console.log(error))
@@ -175,8 +174,7 @@ function getCurrentCharacters(){
 
     fetch("restservices/characters/current", fetchoptions)
         .then(async response => {
-            if (response.status === 200) {console.log("Characters are being shown");
-                return response.json()}
+            if (response.status === 200) {return response.json()}
             else { const JSON = await response.json();
                 window.alert(JSON.error);
                 console.log(JSON.error)}
@@ -191,8 +189,7 @@ function getFavouriteCharacters(){
 
     fetch("restservices/characters/favourite", fetchoptions)
         .then(async response => {
-            if (response.status === 200) {console.log("Characters are being shown");
-                return response.json()}
+            if (response.status === 200) {return response.json()}
             else { const JSON = await response.json();
                 window.alert(JSON.error);
                 console.log(JSON.error)}
@@ -231,7 +228,7 @@ function addMaterials() { //works
         fetch("restservices/materials", fetchoptions)
             .then(async response => {
                 if (response.status === 200) {
-                    window.alert("The materials have been added");
+                    window.alert("The materials have been added.");
                     DIALOG.close();
                     location.reload();
                     return response;
@@ -263,7 +260,7 @@ function transferCharacter() {
         fetch("restservices/characters/transfer/" + character, fetchoptions)
             .then(async response => {
                 if (response.status === 200) {
-                    window.alert("The character has transferred");
+                    window.alert("The character has been transferred.");
                     console.log("it has been modified");
                     location.reload();
                 } else {
@@ -301,8 +298,7 @@ function removeCharacterFromList(listtype) {
         fetch("restservices/characters/" + type + "/" + character, fetchoptions)
             .then(async response => {
                 if (response.status === 200) {
-                    window.alert("The character has removed from the list");
-                    console.log("it has been modified");
+                    window.alert("The character has been removed from the list.");
                     location.reload();
                 } else {
                     const JSON = await response.json();

@@ -28,7 +28,7 @@ public class CharactersResource {
         if(!(c1.isEmpty())){
                 return Response.ok(c1).build();
         }
-        return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character doesn't exist")).build();
+        return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", "Character does not exist")).build();
     }
 
     @RolesAllowed({"admin"})
@@ -39,7 +39,7 @@ public class CharactersResource {
                                     @FormParam("characterCatchphrase") String catchphrase, @FormParam("characterDescription") String description) {
 
         if (name.isEmpty() || URL.isEmpty() || gender.isEmpty() || species.isEmpty() || birthday.isEmpty() || catchphrase.isEmpty() || description.isEmpty()) {
-            return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Fill everything in")).build();
+            return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Please fill in every field.")).build();
         }
 
         if (Data.getData().getAllCharacters().stream().noneMatch(cList -> cList.getName().equals(name))) {
@@ -54,7 +54,7 @@ public class CharactersResource {
             c.setPicture(URL);
             return Response.ok(c).build();
         }
-        return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", "Character already exists")).build();
+        return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", "The character you are trying to create already exists.")).build();
     }
 
     @RolesAllowed({"admin"})
@@ -98,9 +98,9 @@ public class CharactersResource {
                 if (!(description.equals(""))) {
                     character1.setDescription(description);
                 }
-                return Response.ok("The character has been modified").build();
+                return Response.ok("The character has been modified.").build();
             } catch (Exception e) {
-                return Response.ok("The character has been modified").build();
+                return Response.ok("The character has been modified.").build();
             }
 
         } catch (Exception e) {
@@ -118,7 +118,7 @@ public class CharactersResource {
 
         Character.deleteCharacter(name);
 
-            return Response.ok("Character has been deleted").build();
+            return Response.ok("The character has been deleted").build();
 
     }catch(Exception e) {
             return Response.status(404).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
@@ -135,30 +135,13 @@ public class CharactersResource {
         Account u1 = Data.getData().getAccountByName(user.getUserPrincipal().getName());
         Character c1 = Data.getData().getCharacterByName(name);
 
-        System.out.println("list: " + type);
-        System.out.println("name: " + name);
-
         try {
             u1.addCharacter(type, c1);
-//            if (type.equals("current")) {
-//                if (u1.getCurrentCharacters().size() >= 9) {
-//                    throw new Exception("List has reached max capacity");
-//                } else {
-//                    u1.addCurrentCharacter(c1);
-//                    return Response.ok(u1).build();
-//                }
-//            } else if (type.equals("favourite")) {
-//                u1.addFavouriteCharacter(c1);
-//                return Response.ok(u1).build();
-//            }
             return Response.ok(u1).build();
         }catch (Exception e ) {
             return Response.status(409).entity(new AbstractMap.SimpleEntry<>("error", e.getMessage())).build();
 
         }
-
-//        return Response.status(400).entity(new AbstractMap.SimpleEntry<>("error", "Something went wrong")).build();
-
 
     }
 
@@ -195,8 +178,6 @@ public class CharactersResource {
             u1.addCharacter("current", character1);
 
             u1.deleteCharacter("favourite", name);
-            System.out.println(character1);
-
 
             return Response.ok(u1).build();
 

@@ -26,7 +26,7 @@ public class Account implements Principal, Serializable {
                 Data.getData().allAccounts.add(this);
             }
         }else{
-            System.out.println("The username has already been registered in our system. Please use another!");
+            System.out.println("The username you have filled in is already registered in our system. Please use another!");
         }
     }
 
@@ -68,29 +68,29 @@ public class Account implements Principal, Serializable {
                     if (newPassword.length() > 8) {
                         this.password = newPassword;
                     } else {
-                        throw new Exception("The new password has to be at least 8 characters long");
+                        throw new Exception("The new password has to be at least 8 characters long.");
                     }
                 } else {
-                    throw new Exception("The old password is not correct");
+                    throw new Exception("The old password is not correct.");
                 }
             }
-            else {throw new Exception("Please fill in different passwords");}
-        } else {throw new Exception("Please fill in all the fields");}
+            else {throw new Exception("Please fill in different passwords.");}
+        } else {throw new Exception("Please fill in all the fields.");}
     }
     public void addCharacter(String list, Character character) throws Exception {
         if (list.equals("current")) {
             if (currentCharacter.size() >= 9) {
-                throw new Exception("List has reached max capacity");
+                throw new Exception("The list has reached its full capacity of nine characters. ");
             } else {
                 if (currentCharacter.contains(character)) {
-                    throw new Exception("The character you are trying to add already has been added!");
+                    throw new Exception("The character you are trying to add has been added to this list already!");
                 } else {
                     currentCharacter.add(character);
                 }
             }
         } else if (list.equals("favourite")) {
             if (favouriteCharacter.contains(character)) {
-                throw new Exception("The character you are trying to add already has been added!");
+                throw new Exception("The character you are trying to add has been added to this list already!");
             } else {
                 favouriteCharacter.add(character);
             }
@@ -104,10 +104,7 @@ public class Account implements Principal, Serializable {
         return null;
     }
 
-//    public boolean deleteFavourite ()
-
     public boolean deleteCharacter(String list, String name) {
-
         if (list.equals("favourite")) {
             for (Character item : favouriteCharacter) {
                 if (item.getName().equals(name)) {
@@ -128,21 +125,6 @@ public class Account implements Principal, Serializable {
         }
         return false;
     }
-
-//    public void addFavouriteCharacter(Character character){
-//        if (favouriteCharacter.contains(character)){
-//            System.out.println("The character you are trying to add already has been added!");
-//        } else {
-//            favouriteCharacter.add(character);
-//        }
-//    }
-//    public void addCurrentCharacter(Character character){
-//        if (currentCharacter.contains(character)){
-//            System.out.println("The character you are trying to add already has been added!");
-//        }else {
-//            currentCharacter.add(character);
-//        }
-//    }
 
 }
 

@@ -15,7 +15,6 @@ public class Character implements Serializable {
     private String description;
 
     public Character(String name, String gender, String personality, String species, String birthday, String catchphrase, String description) {
-
         if (Data.getData().allCharacters.stream().noneMatch(kList -> kList.getName().equals(name))) {
             this.name = name;
             this.gender = gender;

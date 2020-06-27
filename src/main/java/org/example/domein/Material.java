@@ -10,7 +10,7 @@ public class Material implements Serializable {
     private static HashMap<Material, Integer> defaultList = new HashMap<>();
 
 
-    public Material(String name) { // constructor om nieuw materiaal te creëren
+    public Material(String name) {
         if (Data.getData().allMaterials.stream().noneMatch(mList -> mList.getName().equals(name))) {
         this.name = name;
         Data.getData().allMaterials.add(this);
@@ -21,7 +21,7 @@ public class Material implements Serializable {
             System.out.println("The material you tried to create already exists!");
         }
 
-    }
+    } // constructor om nieuw materiaal te creëren
 
     public String getName(){ return name; }
 

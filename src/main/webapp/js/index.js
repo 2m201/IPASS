@@ -7,10 +7,10 @@ function login(event){
             if (response.ok) {console.log("it works");
                 return response.json()}
             else if (response.status === 400){
-                window.alert("Please fill in every field")
+                window.alert("Please fill in every field.")
             }
-            else if (response.status === 404) {window.alert("Account does not exist")}
-            else if (response.status === 409) {window.alert("Wrong password")}
+            else if (response.status === 404) {window.alert("Account does not exist.")}
+            else if (response.status === 409) {window.alert("Wrong password.")}
         })
         .then (myJson => {window.sessionStorage.setItem("myJWT", myJson.JWT);
 
