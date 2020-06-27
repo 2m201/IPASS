@@ -2,7 +2,6 @@ body{
     background-color: #edf5f5;
     font-family: "Roboto Thin";
 }
-
 .navbar{
     overflow: hidden;
     position: fixed;
@@ -11,7 +10,6 @@ body{
     right: 0;
 
 }
-
 .navigation{
     position: fixed;
     text-decoration: none;
@@ -30,19 +28,16 @@ label.logo{
     padding : 0 40px;
     font-weight: bold;
 }
-
 nav ul{
     float : right;
     margin-right: 20px;
 
 }
-
 nav ul li{
     display: inline-block;
     line-height: 30px;
     margin: 0 5px;
 }
-
 nav ul li a{
     text-decoration: none;
     padding: 7px 10px;
@@ -52,7 +47,6 @@ nav ul li a{
     font-size: 21px;
     text-transform: uppercase;
 }
-
 .navbar a.active,a:hover{
     background: #9ac1fc;
     color: 	black;
@@ -72,6 +66,7 @@ main {margin-top: 60px;}
 .divCharacter nav {
     text-align: center;
 }
+
 .divCharacter nav li  {
     display: inline-block;
     list-style: none;
@@ -82,10 +77,11 @@ main {margin-top: 60px;}
     margin: 10px;
     background-color: #bac4d9;
 }
+
 #favouriteCharacters nav li a , #currentCharacters nav li a{
     text-decoration: none;
-
 }
+
 #accountSection {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
