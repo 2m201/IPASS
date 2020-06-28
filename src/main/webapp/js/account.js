@@ -239,7 +239,18 @@ function addMaterials() { //works
                 appendMaterials(data)
             })
             .then(function (myJson) {
-            }).catch(error => console.log(error))
+            }).catch(error => console.log(error));
+
+        SOFTWOOD.value = "";
+        TREEBRANCH.value = "";
+        CLAY.value = "";
+        GOLDNUGGET.value = "";
+        STARFRAGMENT.value = "";
+        IRONNUGGET.value = "";
+        WOOD.value = "";
+        HARDWOOD.value = "";
+        STONE.value = "";
+        CLUMPOFWEEDS.value = "";
     }
 
 }
