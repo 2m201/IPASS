@@ -204,7 +204,7 @@ function addMaterials() { //works
     if (SOFTWOOD.value == "" && TREEBRANCH.value == "" && CLAY.value == "" && GOLDNUGGET.value == "" && STARFRAGMENT.value == "" && IRONNUGGET.value == "" && WOOD.value == "" && HARDWOOD.value == "" && STONE.value == "" && CLUMPOFWEEDS.value == "") {
         window.alert("Please fill in at least one field");
     } else if (SOFTWOOD.value < 0 || TREEBRANCH.value < 0 || CLAY.value < 0 || GOLDNUGGET.value < 0 || STARFRAGMENT.value < 0 || IRONNUGGET.value < 0 || WOOD.value < 0 || HARDWOOD.value < 0 || STONE.value < 0 || CLUMPOFWEEDS.value < 0 ){
-        window.alert("Please only fill in positive numbers");
+        window.alert("Please only fill in positive numbers.");
     } else {
         if (SOFTWOOD.value == "") {SOFTWOOD.value = -1;}
         if (TREEBRANCH.value == "") {TREEBRANCH.value = -1;}
@@ -249,7 +249,7 @@ function transferCharacter() {
     console.log(character);
 
     if (character === "off" ) {
-        window.alert("Please choose a character");
+        window.alert("Please choose a character.");
     } else {
 
         let fetchoptions = {
@@ -261,7 +261,6 @@ function transferCharacter() {
             .then(async response => {
                 if (response.status === 200) {
                     window.alert("The character has been transferred.");
-                    console.log("it has been modified");
                     location.reload();
                 } else {
                     const JSON = await response.json();
@@ -287,7 +286,7 @@ function removeCharacterFromList(listtype) {
     }
 
     if (character === "off") {
-        window.alert("Please choose a character");
+        window.alert("Please choose a character.");
     } else {
 
         let fetchoptions = {
